@@ -6,6 +6,9 @@
       </div>
       <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
         @on-load="onLoad" :table-loading="loading">
+        <template slot="menu" slot-scope="{row}">
+          <el-button type="text" icon="el-icon-edit" size="medium">編輯</el-button>
+        </template>
       </avue-crud>
     </el-card>
   </div>
