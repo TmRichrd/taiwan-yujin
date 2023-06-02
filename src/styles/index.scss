@@ -1,0 +1,91 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+// main-container global css
+.app-container {
+  padding: 20px;
+}
+.four-border{
+  background:
+    linear-gradient(to top, #39E5EF, #39E5EF) left top no-repeat,/*上左*/
+    linear-gradient(to right, #39E5EF, #39E5EF) left top no-repeat,/*左上*/
+    linear-gradient(to left, #39E5EF, #39E5EF) right top no-repeat,/*上右*/
+    linear-gradient(to bottom, #39E5EF, #39E5EF) right top no-repeat,/*上右*/
+    linear-gradient(to left, #39E5EF, #39E5EF) left bottom no-repeat,/*下左*/
+    linear-gradient(to bottom, #39E5EF, #39E5EF) left bottom no-repeat,/*左下*/
+    linear-gradient(to top, #39E5EF, #39E5EF) right bottom no-repeat,/*下右*/
+    linear-gradient(to left, #39E5EF, #39E5EF) right bottom no-repeat;/*右下*/
+    background-size: 2px 18px, 18px 2px, 2px 18px, 18px 2px;
+}
+.loginForm{
+  .el-input__inner{
+    padding-left:40px !important;
+    height:51px !important;
+    background: none;
+    border: 1px solid #2D67BF;
+    color: #fff;
+  }
+  .el-form-item{
+    margin-bottom: 30px !important;
+  }
+  input::placeholder{
+    color: #2D67BF !important;
+  }
+}
+.flex-row{
+  display: flex;
+  flex: row;
+}
