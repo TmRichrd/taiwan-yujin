@@ -37,12 +37,12 @@ export default {
         searchMenuSpan: 8,
         searchGutter: 40,
         searchMenuPosition: 'left',
-        addBtn: false,
-        header: false,
+        addBtn: true,
         column: [
           {
             label: "等級",
             prop: "level",
+            type: "number"
           },
           {
             label: "類型",
@@ -61,14 +61,17 @@ export default {
           },
           {
             label: "閃爍模式",
+            type: "select",
             prop: "mode",
           },
           {
             label: "亮度",
+            type: "select",
             prop: "ld",
           },
           {
             label: "佔空比",
+            type: "select",
             prop: "zkb",
           },
           {
@@ -91,14 +94,15 @@ export default {
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
+        const zkb = ['']
         this.data = Mock.mock({
           'list|10': [{
             'id|+1': 1,
             'level|1-10': 1,
             'type|1-2': 1,
-            'mode': '模式' + '@integer(1, 10)',
-            'ld|1-100': 1,
-            'zkb|1-100': 1,
+            'mode': `@pick(['40','60','30'])次/分鐘同閃`,
+            'ld': `@pick(['100','80','60','40','20'])%`,
+            'zkb': '閃亮/熄滅比',
             'name': '路段' + '@integer(1, 10)',
           }],
         }).list

@@ -7,18 +7,41 @@
       <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
         @on-load="onLoad" :table-loading="loading">
         <template slot="menu">
-          <el-button type="text" icon="el-icon-lock">權限設置</el-button>
+          <el-button type="text" icon="el-icon-lock" @click="dialog = true">權限設置</el-button>
         </template>
       </avue-crud>
     </el-card>
+    <el-dialog :visible.sync="dialog" width="640px" title="修改權限">
+      <div class="dialog-content role-list">
+        <div style="padding:20px 0">
+          <el-tree ref="tree" :props="defaultProps" :data="AuthList" show-checkbox node-key="url" />
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <div class="dialog-btn-wrap">
+            <el-button type="primary" class="btn" @click="dialog = false">確 定</el-button>
+            <el-button class="btn transparent-btn" @click="dialog = false">取 消</el-button>
+          </div>
+        </div>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import Mock from "mockjs"
+import {constantRoutes} from "@/router"
 export default {
   data () {
     return {
+      defaultProps: {
+        children: 'children',
+        label: function (data) {
+          return data.meta.title
+        }
+        // disabled: "hasChild",  //还可以使用disabled控制节点是否能被选择
+      },
+      AuthList: [],
+      dialog: false,
       loading: false,
       page: {
         currentPage: 1,
@@ -85,6 +108,12 @@ export default {
       },
     };
   },
+  mounted() {
+  console.log('====================================');
+  console.log(constantRoutes);
+  console.log('====================================');
+  this.AuthList = constantRoutes
+  },
   methods: {
     beforeOpen (done, type) {
       if (["edit", "view"].includes(type))
@@ -117,4 +146,31 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.role-list {
+  .el-tree {
+    color: #fff !important;
+    background: none !important;
+  }
+
+  .el-tree-node__label {
+    margin-left: 6px;
+  }
+
+  .el-tree-node__content {
+    background: none !important;
+  }
+
+  .el-tree-node__content:hover {
+    background: #177ddc !important;
+  }
+
+  .is-focusable {
+    background: none !important;
+  }
+
+  .is-current.is-focusable > .el-tree-node__content {
+    background: #177ddc !important;
+  }
+}
+</style>

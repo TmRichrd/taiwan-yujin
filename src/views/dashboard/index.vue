@@ -39,30 +39,48 @@
           <div class="con-texts">
             <el-row :gutter="20" style="margin-left:20px;">
               <el-col :span="6">
-                <span class="green">绿</span>
+                <span class="green">
+                  <img src="@/assets/images/dc3.png" style="width: 64px;" alt="">
+                </span>
               </el-col>
               <el-col :span="6">
-                <span class="yellow">黄</span>
+                <span class="yellow">
+                  <img src="@/assets/images/dc2.png" style="width: 64px;" alt="">
+                </span>
               </el-col>
               <el-col :span="6">
-                <span class="red">红</span>
+                <img src="@/assets/images/dc1.png" style="width: 64px;" alt="">
               </el-col>
               <el-col :span="6">
-                <span class="red">红</span>
+                <img src="@/assets/images/dc0.png" style="width: 64px;" alt="">
               </el-col>
             </el-row>
-            <el-row :gutter="20" style="margin-left:20px;margin-top:10%">
-              <el-col :span="6" style="font-family: Digital;font-size: 36px;">
-                {{ item7['100'] }}
+            <el-row :gutter="20" style="margin-left:20px;">
+              <el-col :span="6">
+                <span class="c1">2368</span>
               </el-col>
-              <el-col :span="6" style="font-family: Digital;font-size: 36px;">
-                {{ item7['66'] }}
+              <el-col :span="6">
+                <span class="c2">80</span>
               </el-col>
-              <el-col :span="6" style="font-family: Digital;font-size: 36px;">
-                {{ item7['33'] }}
+              <el-col :span="6">
+                <span class="c3">15</span>
               </el-col>
-              <el-col :span="6" style="font-family: Digital;font-size: 36px;">
-                {{ item7['0'] }}
+              <el-col :span="6">
+                <span class="c4">5</span>
+              </el-col>
+            </el-row>
+            <el-row :gutter="20" style="margin-left:20px;margin-top:20px">
+              <el-col :span="6">
+                <span class="c1">≥80%</span>
+              </el-col>
+              <el-col :span="6">
+                <span class="c2">79%~50%</span>
+              </el-col>
+              <el-col :span="6">
+                <span class="c3">49~30%</span>
+              </el-col>
+              <el-col :span="6">
+                <span class="c4">≤29%</span>
               </el-col>
             </el-row>
             <!-- <div class="electricity-count" id="electricity"></div> -->
@@ -100,24 +118,36 @@
         <div class="charts_title">事件資訊</div>
         <div class="center-charts">
           <el-row style="height:100%">
-            <el-col :span="12" style="height:100%">
-              <div class="event-play four-border">
-                <span>加载中</span><i class="el-icon-loading"></i>
-              </div>
-            </el-col>
-            <el-col :span="12" style="height:100%">
-              <div class="event-play four-border">
-                <span>加载中</span><i class="el-icon-loading"></i>
-              </div>
-            </el-col>
+            <dv-scroll-board :config="config2" ref="scrollBoard" v-if="config2.data.length"
+              style="width:100%;height:100%" />
           </el-row>
         </div>
       </div>
       <div class="box-right">
         <div class="index-box hindex-box">
           <div class="title" style="height:5%">運作狀態</div>
-          <div class="redian" id="redian">
-
+          <div class="con-text">
+            <div class="con-left">
+              <div class="col">
+                <span class="col-label">激活設備</span>
+                <span class="col-num Digital huanbi">2468</span>
+              </div>
+              <div class="col">
+                <span class="col-label">啟動</span>
+                <span class="col-num Digital huanbi">1000</span>
+              </div>
+              <div class="col">
+                <span class="col-label">關閉及正常</span>
+                <span class="col-num Digital huanbi">1463</span>
+              </div>
+              <div class="col">
+                <span class="col-label">異常</span>
+                <span class="col-num Digital huanbi">68</span>
+              </div>
+            </div>
+            <div class="con-right">
+              <div class="redian" id="redian"></div>
+            </div>
           </div>
         </div>
         <div class="index-box hindex-box">
@@ -173,15 +203,30 @@ export default {
   data () {
     return {
       config: {
-        columnWidth: [250, 150, 150, 250],
-        header: ['路段分類', '閃爍頻率', '亮度', '資料回報情況'],
+        columnWidth: [370, 120, 250, 250, 120],
+        header: ['路段分類', '國道別', '管轄單位', '閃爍頻率', '亮度'],
         data: [],
-        align: ['center', 'center', 'center', 'center']
+        align: ['center', 'center', 'center', 'center', 'center']
       },
       config1: {
-        columnWidth: [250, 150, 150, 250],
-        header: ['時間', '太陽能板發電', '電池狀態', '週期設定'],
+        columnWidth: [450, 250, 450, 250, 200],
+        header: ['時間', '週期設定', '設備編碼', '太陽能板發電', '蓄電池',],
         data: [],
+        align: ['center', 'center', 'center', 'center', 'center']
+      },
+      config2: {
+        columnWidth: [],
+        header: ['事件類別', '事件詳情', '時間'],
+        data: [
+          ['設備異常', '設備通訊中斷', '2023/9/10 15:20:10'],
+          ['濃霧事件', '小霧事件發佈', '2023/9/10 15:25:10'],
+          ['濃霧事件', '中霧事件發佈', '2023/9/10 15:30:10'],
+          ['濃霧事件', '大霧事件發佈', '2023/9/10 15:35:10'],
+          ['濃霧事件', '大霧事件發佈', '2023/9/10 15:40:10'],
+          ['濃霧事件', '大霧事件發佈', '2023/9/10 15:40:10'],
+          ['濃霧事件', '大霧事件發佈', '2023/9/10 15:40:10'],
+          ['濃霧事件', '大霧事件發佈', '2023/9/10 15:40:10'],
+        ],
         align: ['center', 'center', 'center', 'center']
       },
       companyName: '', // 公司名称
@@ -269,68 +314,44 @@ export default {
   },
   methods: {
     initRedianOption () {
-      return {
-        color: ['#F7507F', '#0DA3E7'],
+      const data = {
+        color: ['#67C23A', '#F7507F', '#D73247', '#E6A438'],
+        title: {
+          top: '0',
+          text: this.title,
+          textStyle: {
+            fontSize: 14,
+            color: '#F5CA7E'
+          }
+        },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
         },
         legend: {
-          show: false,
-          right: '3%',
+          show: true,
           icon: 'rect',
           textStyle: {
             color: '#0E9DE0'
           }
         },
         grid: {
-          left: '2%',
-          right: '5%',
-          top: '60',
-          bottom: '3%',
           containLabel: true
-        },
-        xAxis: {
-          axisLabel: {
-            color: '#0E9DE0',
-            interval: 0,
-            fontSize: 10,
-          },
-          axisLine: {
-            lineStyle: {
-              color: '#0E9DE0',
-            }
-          },
-          type: 'category',
-          data: this.barData[0],
-          axisTick: {
-            alignWithLabel: true
-          }
-        },
-        yAxis: {
-          name: '数量',
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            lineStyle: {
-              color: '#0E9DE0'
-            }
-          },
-          axisLabel: {
-            color: '#0E9DE0'
-          },
-          type: 'value'
         },
         series: [
           {
-            name: '数量',
-            type: 'bar',
+            name: this.title,
+            type: 'pie',
+            labelLine: {
+              show: false
+            },
             stack: '总量',
-            barWidth: '20',
-            barCategoryGap: '10%',
+            radius: [0, '50%'],
+            center: ['50%', '60%'],
             label: {
-              show: true,
-              position: "top"
+              position: 'inner',
+              fontSize: 10,
+              formatter: '{d}%'
             },
             areaStyle: {
               color: {
@@ -347,10 +368,16 @@ export default {
                 global: false // 缺省为 false
               }
             },
-            data: this.barData[1]
+            data: [
+              { value: 2468 || 0, name: '激活設備' },
+              { value: 1000 || 0, name: '啟動' },
+              { value: 1463 || 0, name: '關閉及正常' },
+              { value: 68 || 0, name: '異常' },
+            ]
           }
         ]
-      };
+      }
+      return data
     },
     initEleCtricity () {
       const data = {
@@ -487,26 +514,53 @@ export default {
     },
     async getData () {
       // const res = await getIndexInfo({ pathUrl: this.$route.path })
+      const arr = [
+        "N151K + 500~N147K + 700",
+        "N124K +000~N121K + 700",
+        "S106K + 120~S107K + 600",
+        "S121K + 100~S123K + 100",
+        "S199K + 375~S204 + 320",
+        "S206K + 820~S210K + 175",
+        "N112K + 500~N110K + 703",
+        "N186K +050~N181K + 300",
+        "N214K +000~N212K + 300",
+        "N206K + 700~N203K + 300",
+      ]
+      const danwei = [
+        "苗栗工務段",
+        "苗栗工務段",
+        "苗栗工務段",
+        "苗栗工務段",
+        "斗南工務段",
+        "斗南工務段",
+        "大甲工務段",
+        "大甲工務段",
+        "南投工務段",
+        "南投工務段",
+      ]
       const res = Mock.mock({
         'item1': [{
-          "jihuoshu": "@integer(0, 1000)",
-          "offlineshu": "@integer(0, 1000)",
-          "onlineshu": "@integer(0, 1000)",
+          "jihuoshu": "2468",
+          "offlineshu": "68",
+          "onlineshu": "2400",
         }],
         "item2": [],
         "item3": [],
         "item4": [],
         "item5|10": [{
-          "name": '分類' + '@integer(0, 1000)',
-          "yjzz": "@integer(0, 1000)",
-          "number": "@integer(0, 1000)",
-          "datetime": `@pick(${['已回報', '未回報']})`,
+          "name": `@pick(${arr})`,
+          "yjzz": '國道' + "@integer(0, 3)",
+          "number": `@pick(${danwei})`,
+          "datetime": `@pick(${['40', '30', '60']})次/分鐘同閃`,
+          "liangdu": `@pick(${['10', '20', '30', '40', '50', '60', '70', '80', '90', '100']})%`
         }],
         "item6": [],
       })
+      const zhouqi = ['5分鐘', '10分鐘', '30分鐘', '120分鐘']
+      const bianma = ['FI-N1-S-140.150-0', 'FI-N1-S-140.150-1', 'FI-N1-S-145.155-0', 'FI-N1-S-176.300-0']
       this.config1.data = Mock.mock({
         'list|10': [
-          ["@datetime", '@integer(0, 1000)', `@pick(${['10', '20', '30', '40', '50', '60', '100']})%`, `@integer(1, 2)`]
+          ["@datetime('yyyy/MM/dd HH:mm:ss')", `@pick(${zhouqi})`, `@pick(${bianma})`, `正常`, `@pick(${['10', '20', '30', '40', '50', '60', '70', '80', '90', '100']})%`]
         ]
       }).list
       this.item7 = Mock.mock({
@@ -622,6 +676,7 @@ export default {
           arr[1] = (item.yjzz)
           arr[2] = item.number
           arr[3] = item.datetime
+          arr[4] = item.liangdu
           tableData.push(arr)
         })
         this.config.data = tableData
@@ -842,6 +897,8 @@ export default {
         .col-label {
           font-size: 24px;
           margin-right: 20px;
+          width: 120px;
+          display: inline-block;
         }
 
         .col-num {
@@ -930,19 +987,29 @@ export default {
   height: 85%;
 }
 
-.green {
-  color: green;
-}
+.green {}
 
-.yellow {
-  color: #e6a438;
-}
+.yellow {}
 
-.red {
-  color: red;
-}
+.red {}
 
 #electricity {
   height: 90%;
+}
+
+.c1 {
+  color: #375623;
+}
+
+.c2 {
+  color: #A9D08E;
+}
+
+.c3 {
+  color: #ED7D31
+}
+
+.c4 {
+  color: #FF0000;
 }
 </style>

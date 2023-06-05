@@ -34,12 +34,14 @@ export const constantRoutes = [
   {
     path: "/login",
     component: () => import("@/views/login/index"),
+    meta: { title: "登錄", icon: "dashboard" },
     hidden: true,
   },
 
   {
     path: "/404",
     component: () => import("@/views/404"),
+    meta: { title: "404", icon: "dashboard" },
     hidden: true,
   },
 
@@ -47,12 +49,13 @@ export const constantRoutes = [
     path: "/",
     component: Layout,
     redirect: "/dashboard",
+    meta: { title: "首頁", icon: "dashboard" },
     children: [
       {
         path: "dashboard",
         name: "Dashboard",
         component: () => import("@/views/dashboard/index"),
-        meta: { title: "首頁", icon: "dashboard" },
+        meta: { title: "工作臺", icon: "dashboard" },
       },
     ],
   },
@@ -95,6 +98,13 @@ export const constantRoutes = [
         name: "light",
         component: () => import("@/views/device/light/index.vue"),
         meta: { title: "閃光黃燈", icon: "dashboard" },
+      },
+      {
+        path: "detail",
+        name: "detail",
+        hidden: true,
+        component: () => import("@/views/device/detail/index.vue"),
+        meta: { title: "閃光黃燈詳情", icon: "dashboard" },
       },
     ],
   },
@@ -265,7 +275,7 @@ export const constantRoutes = [
   // },
 
   // 404 page must be placed at the end !!!
-  { path: "*", redirect: "/404", hidden: true },
+  // { path: "*", redirect: "/404", hidden: true },
 ];
 
 const createRouter = () =>

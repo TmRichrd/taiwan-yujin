@@ -1,21 +1,17 @@
 <template>
-  <div class="app-container">
-    <el-card>
+  <div>
+    <el-card style="margin-bottom:20px">
       <div slot="header" class="clearfix">
-        <span>霧區閃光黃燈</span>
+        <span>回報資料</span>
       </div>
       <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
         @on-load="onLoad" :table-loading="loading">
-        <template slot="menu">
-          <el-button @click="handleDetail" icon="el-icon-edit" type="text" size="small">編輯</el-button>
-        </template>
       </avue-crud>
     </el-card>
   </div>
 </template>
 
 <script>
-import Mock from 'mockjs';
 export default {
   data () {
     return {
@@ -48,21 +44,21 @@ export default {
         searchMenuPosition: 'left',
         addBtn: false,
         editBtn: false,
+        delBtn:false,
+        menu:false,
+        header:false,
         column: [
           {
             label: "ID",
             prop: "id",
-            search: true,
           },
           {
             label: "狀態",
-            search: true,
             prop: "status"
           },
           {
             label: "設備方向",
             prop: "Equipment_direction",
-            search: true,
           },
           {
             label: "路段特性",
@@ -70,12 +66,10 @@ export default {
           },
           {
             label: "設備位置",
-            search: true,
             prop: "Equipment_location"
           },
           {
             label: "設備編碼",
-            search: true,
             prop: "Equipment_coding"
           },
           {
@@ -88,12 +82,10 @@ export default {
           },
           {
             label: "管轄單位",
-            search: true,
             prop: "Jurisdictional_unit"
           },
           {
             label: "護欄型式",
-            search: true,
             prop: "Guardrail_type"
           },
           {
@@ -132,64 +124,15 @@ export default {
             label: "最後一次濃霧時間",
             prop: "last_datetime"
           },
+          {
+            label:"回報日期",
+            prop:"return_date"
+          }
         ]
       },
-    };
-  },
-  methods: {
-    beforeOpen (done, type) {
-      if (["edit", "view"].includes(type))
-      {
-
-      }
-      done()
-    },
-    handleDetail(){
-      this.$router.push('/device/detail')
-    },
-    onLoad (page, params = {}) {
-      //   this.loading = true;
-      //   const data = Mock.mock({
-      //     code: 0,
-      //     msg: "success",
-      //     data: {
-      //       total: 100,
-      //       [`list|${page.pageSize}`]: [
-      //         {
-      //           id: "@increment",
-      //           name: "@cname",
-      //           desc: "@cparagraph(1, 3)",
-      //           datetime: "@datetime",
-      //           last_datetime: "@datetime",
-      //           status: "@integer(0, 1)",
-      //           Equipment_direction: "@integer(0, 1)",
-      //           Road_section_characteristics: "@integer(0, 1)",
-      //           Equipment_location: "@integer(0, 1)",
-      //           Equipment_coding: "@integer(0, 1)",
-      //           Main_line_mileage: "@integer(0, 1)",
-      //           Installation_position: "@integer(0, 1)",
-      //           Jurisdictional_unit: "@integer(0, 1)",
-      //           Guardrail_type: "@integer(0, 1)",
-      //           Battery: "@integer(0, 1)",
-      //           Solar_panel_power_generation_status: "@integer(0, 1)",
-      //           Return_period: "@integer(0, 1)",
-      //           Flicker_frequency: "@integer(0, 1)",
-      //           light: "@integer(0, 1)",
-      //           yz_status: "@integer(0, 1)",
-      //           record: "@integer(0, 1)",
-      //         }
-      //       ]
-      //     }
-      //   });
-      //   console.log('====================================');
-      //   console.log(data);
-      //   console.log('====================================');
-      //   this.data = data.data.list;
-      //   this.page.total = data.data.total;
-      //   this.loading = false;
     }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped></style>
