@@ -489,61 +489,85 @@
   height: 74px !important;
 }
 
-.el-autocomplete-suggestion{
+.el-autocomplete-suggestion {
   background: #0c1933 !important;
 }
-.el-autocomplete-suggestion.is-loading li:hover{
+.el-autocomplete-suggestion.is-loading li:hover {
   background: #0c1933 !important;
 }
-.el-autocomplete-suggestion li{
+.el-autocomplete-suggestion li {
   color: #fff;
 }
-.el-autocomplete-suggestion li:hover{
+.el-autocomplete-suggestion li:hover {
   background-color: #346cd7 !important;
 }
-// 
+//
 .BMap_top,
 .BMap_center,
-.BMap_bottom{
-  background-color: #14429e!important;
+.BMap_bottom {
+  background-color: #14429e !important;
 }
 .BMap_bottom,
 .BMap_top,
-.BMap_center{
+.BMap_center {
   display: none;
 }
-.BMap_bubble_content{
-  color: #89B2FF;
+.BMap_bubble_content {
+  color: #89b2ff;
 }
-.BMap_pop>div>div:not(.BMap_bubble_content){
+.BMap_pop > div > div:not(.BMap_bubble_content) {
   display: none;
   // background-color: #14429e!important;
 }
-.BMap_pop>div
-.map-info-wrap{
+.BMap_pop > div .map-info-wrap {
   position: absolute;
   padding: 20px;
-  background-color: rgba(0, 39,114, 0.5);
-  &>div{
+  background-color: rgba(0, 39, 114, 0.5);
+  & > div {
     line-height: 30px;
   }
 }
-.BMap_pop{
-  img{
+.BMap_pop {
+  img {
     display: none;
   }
 }
-.table-form-wrap{
-  
-  .inline-title{
+.table-form-wrap {
+  .inline-title {
     min-width: 60px;
   }
-  .search-wrap.flex-row{
+  .search-wrap.flex-row {
     flex-wrap: wrap;
-    &>div{
+    & > div {
     }
   }
 }
 .el-transfer-panel {
   width: 310px !important;
+}
+
+.fa {
+  display: block;
+  width: 120px;
+  height: 40px;
+  &.fa-battery-4 {
+    background: url(./../assets/images/ele_green.png) no-repeat left center;
+    background-size: auto 100%;
+  }
+  &.fa-battery-3 {
+    background: url(./../assets/images/ele_green2.png) no-repeat left center;
+    background-size: auto 100%;
+  }
+  &.fa-battery-2 {
+    background: url(./../assets/images/ele_yellow.png) no-repeat left center;
+    background-size: auto 100%;
+  }
+  &.fa-battery-1 {
+    background: url(./../assets/images/ele_red.png) no-repeat left center;
+    background-size: auto 100%;
+  }
+  &.fa-battery-0 {
+    background: url(./../assets/images/ele_gray.png) no-repeat left center;
+    background-size: auto 100%;
+  }
 }

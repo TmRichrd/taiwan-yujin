@@ -1,47 +1,22 @@
 <template>
   <div class="add-road bread-content app-container">
     <el-card>
-      <div slot="header"
-           class="clearfix">
-        <span>TCP设置</span>
+      <div slot="header" class="clearfix">
+        <span>TCP設定</span>
       </div>
       <div class="form-wrap">
-        <el-form ref="tcpForm"
-                 :model="tcpForm"
-                 :rules="rules"
-                 class="tcpForm"
-                 label-width="120px">
-          <el-form-item prop="ip"
-                        class="login-item"
-                        label="IP地址：">
-            <el-input v-model="tcpForm.ip"
-                      label="IP地址："
-                      class="area"
-                      type="text"
-                      placeholder="请输入IP地址" />
+        <el-form ref="tcpForm" :model="tcpForm" :rules="rules" class="tcpForm" label-width="120px">
+          <el-form-item prop="ip" class="login-item" label="IP位址：">
+            <el-input v-model="tcpForm.ip" label="IP位址：" class="area" type="text" placeholder="請輸入IP位址" />
           </el-form-item>
-          <el-form-item prop="texpPort"
-                        class="login-item"
-                        label="Text端口：">
-            <el-input v-model="tcpForm.texpPort"
-                      label="Text端口："
-                      class="area"
-                      type="text"
-                      placeholder="请输入Text端口" />
+          <el-form-item prop="texpPort" class="login-item" label="TEXT埠：">
+            <el-input v-model="tcpForm.texpPort" label="TEXT埠：" class="area" type="text" placeholder="請輸入TEXT埠" />
           </el-form-item>
-          <el-form-item prop="tcpPort"
-                        class="login-item"
-                        label="Tcp端口：">
-            <el-input v-model="tcpForm.tcpPort"
-                      label="Tcp端口："
-                      class="area"
-                      type="text"
-                      placeholder="请输入Tcp端口" />
+          <el-form-item prop="tcpPort" class="login-item" label="TCP埠：">
+            <el-input v-model="tcpForm.tcpPort" label="TCP埠：" class="area" type="text" placeholder="請輸入TCP埠" />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary"
-                       class="submit_btn blue2Btn"
-                       @click="submitForm('tcpForm')">保存</el-button>
+            <el-button type="primary" class="submit_btn blue2Btn" @click="submitForm('tcpForm')">保存</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -63,13 +38,13 @@ export default {
       },
       rules: {
         ip: [
-          { required: true, message: '請輸入IP地址', trigger: 'blur' }
+          { required: true, message: '請輸入IP位址', trigger: 'blur' }
         ],
         texpPort: [
-          { required: true, message: '請輸入TEXT端口', trigger: 'blur' }
+          { required: true, message: '請輸入TEXT埠', trigger: 'blur' }
         ],
         tcpPort: [
-          { required: true, message: '請輸入Tcp端口', trigger: 'blur' }
+          { required: true, message: '請輸入TCP埠', trigger: 'blur' }
         ]
       }
     }
@@ -79,10 +54,10 @@ export default {
   },
   methods: {
     async getData () {
-      const data= Mock.mock({
-        ip:"@ip",
-        texpPort:"@integer(1000, 9999)",
-        tcpPort:"@integer(1000, 9999)"
+      const data = Mock.mock({
+        ip: "@ip",
+        texpPort: "@integer(1000, 9999)",
+        tcpPort: "@integer(1000, 9999)"
       })
       this.tcpForm.ip = data.ip
       this.tcpForm.texpPort = data.texpPort
@@ -118,8 +93,10 @@ export default {
 <style lang="scss" scoped>
 .add-road {
   overflow: hidden;
+
   .form-wrap {
     background: #0a2354;
+
     .submit_btn {
       width: 140px;
       height: 40px;

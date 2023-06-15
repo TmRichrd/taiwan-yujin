@@ -1,14 +1,18 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header" class="clearfix">
-        <span>狀態資訊</span>
+      <div slot="header"
+           class="clearfix">
+        <span>設備狀態</span>
       </div>
-      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
-        @on-load="onLoad" :table-loading="loading">
-        <template slot="menuLeft">
-          <el-button type="primary" size="small" icon="el-icon-download">导 出</el-button>
-        </template>
+      <avue-crud :option="option"
+                 :page.sync="page"
+                 v-model="form"
+                 :data="data"
+                 :before-open="beforeOpen"
+                 @on-load="onLoad"
+                 :table-loading="loading"
+                 @search-change="searchChange">
       </avue-crud>
     </el-card>
   </div>
@@ -30,110 +34,97 @@ export default {
       option: {
         border: false,
         index: false,
-        size: 'mini',
+        size: "medium",
         filterBtn: false,
         headerAlign: 'center',
         align: 'center',
         dialogWidth: "40%",
         labelWidth: 140,
         searchSpan: 6,
-        searchMenuSpan: 8,
+        searchIndex: 3,
+        searchIcon: true,
+        searchMenuSpan: 6,
         searchGutter: 40,
         searchMenuPosition: 'left',
-        addBtn: false,
         editBtn: false,
+        addBtn: false,
+        menu: false,
         column: [
           {
-            label: "ID",
-            prop: "id",
+            label: "紀錄時間",
+            prop: "time",
+            search: true,
+            range: true,
+            searchRange: true,
+            valueFormat: "yyyy-MM-dd",
+            type: "daterange",
           },
           {
-            label: "狀態",
-            prop: "status"
+            label: "設備編號",
+            search: true,
+            prop: "device_id",
           },
           {
-            label: "設備方向",
-            prop: "Equipment_direction"
-          },
-          {
-            label: "路段特性",
-            prop: "Road_section_characteristics"
-          },
-          {
-            label: "設備位置",
-            prop: "Equipment_location"
-          },
-          {
-            label: "設備編碼",
-            prop: "Equipment_coding"
-          },
-          {
-            label: "主綫里程",
-            prop: "Main_line_mileage"
-          },
-          {
-            label: "安裝位置",
-            prop: "Installation_position"
-          },
-          {
-            label: "管轄單位",
-            prop: "Jurisdictional_unit"
-          },
-          {
-            label: "護欄型式",
-            prop: "Guardrail_type"
-          },
-          {
-            label: "蓄電池",
-            prop: "Battery"
-          },
-          {
-            label: "太陽能板發電狀態",
-            prop: "Solar_panel_power_generation_status"
-          },
-          {
-            label: "回報周期",
-            prop: "Return_period"
-          },
-          {
-            label: "閃爍頻率",
-            prop: "Flicker_frequency"
-          },
-          {
-            label: "亮度",
-            prop: "light"
+            label: "連線狀態",
+            type: "select",
+            prop: "status",
+            search: true,
+            dicData: [{
+              label: "斷線",
+              value: 0
+            },
+            {
+              label: "連線",
+              value: 1
+            }],
           },
           {
             label: "運作狀態",
-            prop: "yz_status"
-          },
-          {
-            label: "維修記錄",
-            prop: "record"
-          },
-          {
-            label: "創建時間",
-            prop: "datetime"
-          },
-          {
-            label: "最後一次濃霧時間",
-            prop: "last_datetime"
-          },
-          {
-            hide:true,
-            label: "日期",
-            prop: "date",
-            type: "daterange",
-            valueFormat: "yyyy-MM-dd",
-            range: true,
-            searchRange: true,
             search: true,
+            type: "select",
+            prop: "yz_status",
+            dicData: [{
+              label: "異常",
+              value: 0
+            },
+            {
+              label: "正常",
+              value: 1
+            }],
           },
+          {
+            label: "太陽能板發電狀態",
+            search: true,
+            prop: "Solar_panel_power_generation_status",
+            type: "select",
+            dicData: [{
+              label: "異常",
+              value: 0
+            },
+            {
+              label: "正常",
+              value: 1
+            }],
+          },
+          {
+            label: "電池電量",
+            search: true,
+            prop: "Battery",
+          },
+          {
+            label: "工作模式",
+            search: true,
+            type: "select",
+            prop: "model",
+          }
         ]
       },
     };
   },
   methods: {
+    searchChange (params, done) {
+      done()
+    },
     beforeOpen (done, type) {
       if (["edit", "view"].includes(type))
       {
@@ -142,45 +133,31 @@ export default {
       done()
     },
     onLoad (page, params = {}) {
-      //   this.loading = true;
-      //   const data = Mock.mock({
-      //     code: 0,
-      //     msg: "success",
-      //     data: {
-      //       total: 100,
-      //       [`list|${page.pageSize}`]: [
-      //         {
-      //           id: "@increment",
-      //           name: "@cname",
-      //           desc: "@cparagraph(1, 3)",
-      //           datetime: "@datetime",
-      //           last_datetime: "@datetime",
-      //           status: "@integer(0, 1)",
-      //           Equipment_direction: "@integer(0, 1)",
-      //           Road_section_characteristics: "@integer(0, 1)",
-      //           Equipment_location: "@integer(0, 1)",
-      //           Equipment_coding: "@integer(0, 1)",
-      //           Main_line_mileage: "@integer(0, 1)",
-      //           Installation_position: "@integer(0, 1)",
-      //           Jurisdictional_unit: "@integer(0, 1)",
-      //           Guardrail_type: "@integer(0, 1)",
-      //           Battery: "@integer(0, 1)",
-      //           Solar_panel_power_generation_status: "@integer(0, 1)",
-      //           Return_period: "@integer(0, 1)",
-      //           Flicker_frequency: "@integer(0, 1)",
-      //           light: "@integer(0, 1)",
-      //           yz_status: "@integer(0, 1)",
-      //           record: "@integer(0, 1)",
-      //         }
-      //       ]
-      //     }
-      //   });
-      //   console.log('====================================');
-      //   console.log(data);
-      //   console.log('====================================');
-      //   this.data = data.data.list;
-      //   this.page.total = data.data.total;
-      //   this.loading = false;
+      this.loading = true;
+      const time = [30, 60, 90, 120]
+      const model = ['每分鐘閃爍']
+      setTimeout(() => {
+        this.loading = false;
+        this.data = Mock.mock({
+          "data|10": [{
+            "id|+1": 1,
+            "time": "@datetime",
+            "device_id": "@string(16)",
+            "status|1": [0, 1],
+            "yz_status|1": [0, 1],
+            "Solar_panel_power_generation_status|1": [0, 1],
+            "Battery": "@integer(70, 100)%",
+            "model": `@pick(${time})次/@pick(${model})`,
+          }],
+          page: {
+            total: 100,
+            pageSize: 10,
+            currentPage: 1,
+          }
+        }).data;
+        this.page = page;
+        this.page.total = 100;
+      }, 300);
     }
   },
 };

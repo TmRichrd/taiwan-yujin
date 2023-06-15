@@ -3,7 +3,7 @@
     <el-card>
       <div slot="header"
            class="clearfix">
-        <span>優先等級</span>
+        <span>時段控制</span>
       </div>
       <avue-crud :option="option"
                  :page.sync="page"
@@ -43,89 +43,68 @@ export default {
         searchMenuSpan: 8,
         searchGutter: 40,
         searchMenuPosition: 'left',
-        addBtn: false,
-        delBtn: false,
-        header: false,
         column: [
           {
-            label: "等級",
-            prop: "level",
-            type: "number",
+            label: "起始時間",
+            prop: "start_time",
             span: 16,
+            type: "time",
+            format: "HH:mm",
+            dataFormat: "HH:mm"
           },
           {
-            label: "能見度",
-            type: "select",
+            label: "結束時間",
+            prop: "end_time",
             span: 16,
-            prop: "type",
-            dicData: [
-              {
-                label: ">300",
-                value: 0
-              },
-              {
-                label: "200-300",
-                value: 1
-              },
-              {
-                label: "100-200",
-                value: 2
-              },
-              {
-                label: "50-100",
-                value: 3
-              },
-              {
-                label: "<50",
-                value: 4
-              },
-            ]
+            type: "time",
+            format: "HH:mm",
+            dataFormat: "HH:mm"
           },
           {
             label: "工作模式",
             type: "select",
-            span: 16,
             prop: "mode",
+            span: 16,
             dicData: [
               {
                 label: "40次/分鐘同閃",
-                value: 0
+                value: 40
               },
               {
                 label: "60次/分鐘同閃",
-                value: 1
+                value: 60
               },
               {
                 label: "30次/分鐘同閃",
-                value: 2
+                value: 30
               }
             ]
           },
           {
             label: "亮度選擇",
             type: "select",
-            span: 16,
             prop: "ld",
+            span: 16,
             dicData: [
               {
                 label: "100%",
-                value: 0
+                value: 100
               },
               {
                 label: "80%",
-                value: 1
+                value: 80
               },
               {
                 label: "60%",
-                value: 2
+                value: 60
               },
               {
                 label: "40%",
-                value: 3
+                value: 40
               },
               {
                 label: "20%",
-                value: 4
+                value: 20
               }
             ]
           },
@@ -145,19 +124,20 @@ export default {
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
-        const zkb = ['']
         this.data = Mock.mock({
-          'list|5': [{
-            'id': "@increment(1)",
-            'level|+1': 1,
-            'type|1-4': 1,
-            'mode': `@pick(['40','60','30'])次/分鐘同閃`,
-            'ld': `@pick(['100','80','60','40','20'])%`,
-            'zkb': '閃亮/熄滅比',
-            'name': '路段' + '@integer(1, 10)',
-          }],
-        }).list
-      }, 300);
+          "list|10": [
+            {
+              "id|+1": 1,
+              "start_time": "@time('HH:mm')",
+              "end_time": "@time('HH:mm')",
+              'mode': `@pick(['40','60','30'])次/分鐘同閃`,
+              'ld': `@pick(['100','80','60','40','20'])%`,
+            }
+          ],
+          total: 30
+        }).list;
+        this.page.total = 100
+      }, 500);
     }
   },
 };

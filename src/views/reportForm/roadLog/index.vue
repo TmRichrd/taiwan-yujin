@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card>
       <div slot="header" class="clearfix">
-        <span>操作事件</span>
+        <span>路段日誌</span>
       </div>
       <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
         @on-load="onLoad" :table-loading="loading" @search-change="searchChange">
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Mock from "mockjs"
+import Mock from 'mockjs';
 export default {
   data () {
     return {
@@ -52,30 +52,30 @@ export default {
             search: true,
           },
           {
-            label: "電子信箱",
-            search: true,
-            prop: "user_email",
-          },
-          {
-            label: "事件類型",
+            label: "日誌類型",
             search: true,
             prop: "event_type",
             type: "select",
             dicData: [
               {
-                label: "閃爍",
+                label: "故障排除",
                 value: 0
               },
               {
-                label: "點亮",
+                label: "修復",
                 value: 1
               },
               {
-                label: "熄滅",
+                label: "維護",
                 value: 2
               }
             ]
-          }
+          },
+          {
+            label: "内容",
+            search: true,
+            prop: "content",
+          },
         ]
       },
     };
@@ -93,16 +93,18 @@ export default {
     },
     onLoad (page, params = {}) {
       this.loading = true;
+      const content = ['故障排除', '修復', '維護']
       setTimeout(() => {
         this.loading = false;
         this.data = Mock.mock({
           "data|10": [
             {
-              "id|+1": 1,
+              id: "@increment",
               time: "@datetime",
               user_login: "@name",
               user_email: "@EMAIL",
               event_type: "@integer(0, 2)",
+              content: `@pick(${content})`,
             }
           ],
           page: {
@@ -111,22 +113,7 @@ export default {
             currentPage: 1
           }
         }).data;
-        this.page = Mock.mock({
-          "data|10": [
-            {
-              "id|+1": 1,
-              time: "@datetime",
-              user_login: "@name",
-              user_email: "@EMAIL",
-              event_type: "@integer(0, 2)",
-            }
-          ],
-          page: {
-            total: 100,
-            pageSize: 10,
-            currentPage: 1
-          }
-        }).page;
+        this.page.total = 100
       }, 300);
     }
   },

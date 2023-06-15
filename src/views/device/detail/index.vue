@@ -1,19 +1,29 @@
 <template>
   <div class="app-container">
     <div class="road-detail">
-      <el-tabs type="card" v-model="activeName" class="box-nav">
-        <el-tab-pane label="基本信息" name="1">
+      <el-tabs type="card"
+               v-model="activeName"
+               class="box-nav">
+        <el-tab-pane label="基本訊息"
+                     name="1">
           <BasicInfo v-if="activeName === '1'" />
         </el-tab-pane>
-        <el-tab-pane label="回報資料" name="2">
+        <el-tab-pane label="運作模式"
+                     name="2">
           <Returns v-if="activeName === '2'" />
         </el-tab-pane>
-        <el-tab-pane label="設備維護" name="3">
-          <Maintenance v-if="activeName === '3'" />
+        <el-tab-pane label="閃光黃燈"
+                     name="3">
+          <Lights v-if="activeName === '3'" />
+        </el-tab-pane>
+        <el-tab-pane label="路段日誌報表"
+                     name="4">
+          <Maintenance v-if="activeName === '4'" />
         </el-tab-pane>
       </el-tabs>
       <div class="back">
-        <div class="back-btn" @click="handleGoBack">
+        <div class="back-btn"
+             @click="handleGoBack">
           <i class="el-icon-arrow-left"></i>返回上級
         </div>
       </div>
@@ -24,11 +34,13 @@
 import BasicInfo from "./components/BasicInfo/index.vue";
 import Returns from "./components/Returns/index.vue";
 import Maintenance from "./components/Maintenance/index.vue";
+import Lights from "./components/Lights/index.vue";
 export default {
   components: {
     BasicInfo,
     Returns,
-    Maintenance
+    Maintenance,
+    Lights
   },
   data () {
     return {

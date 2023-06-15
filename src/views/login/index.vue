@@ -8,7 +8,7 @@
         <el-form ref="loginForm" :model="loginForm" :rules="rules" class="loginForm">
           <el-form-item prop="username" class="login-item">
             <span class="loginTips"><i class="icon icon-user" /></span>
-            <el-input v-model="loginForm.username" class="area" type="text" placeholder="用戶名"
+            <el-input v-model="loginForm.username" class="area" type="text" placeholder="帳號"
               @keyup.enter.native="submitForm('loginForm')" />
           </el-form-item>
           <el-form-item prop="password" class="login-item">
@@ -28,7 +28,7 @@
           </el-form-item>
           <el-form-item>
             <el-button type="primary" :disabled="loading" :icon="loading ? 'el-icon-loading' : ''" class="submit_btn"
-              @click="submitForm('loginForm')">登錄</el-button>
+              @click="submitForm('loginForm')">登入</el-button>
           </el-form-item>
         </el-form>
       </section>
@@ -139,7 +139,7 @@ export default {
       redirect: undefined,
       rules: {
         username: [
-          { required: true, message: '請輸入用戶名', trigger: 'blur' },
+          { required: true, message: '請輸入帳號', trigger: 'blur' },
           { min: 2, max: 25, message: '长度在2-25之间', trigger: 'blur' }
         ],
         password: [

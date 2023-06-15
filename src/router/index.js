@@ -75,12 +75,6 @@ export const constantRoutes = [
         component: () => import("@/views/test/test1/index.vue"),
         meta: { title: "路段列表", icon: "dashboard" },
       },
-      {
-        path: "test2",
-        name: "test2",
-        component: () => import("@/views/test/test2/index.vue"),
-        meta: { title: "優先等級", icon: "dashboard" },
-      },
     ],
   },
   {
@@ -88,11 +82,17 @@ export const constantRoutes = [
     component: Layout,
     redirect: "/device/light",
     meta: {
-      title: "設備管理",
+      title: "系統設置",
       icon: "dashboard",
     },
     alwaysShow: true,
     children: [
+      {
+        path: "tcp",
+        name: "tcp",
+        component: () => import("@/views/device/tcp/index.vue"),
+        meta: { title: "TCP設定", icon: "dashboard" },
+      },
       {
         path: "light",
         name: "light",
@@ -104,7 +104,25 @@ export const constantRoutes = [
         name: "detail",
         hidden: true,
         component: () => import("@/views/device/detail/index.vue"),
-        meta: { title: "閃光黃燈詳情", icon: "dashboard" },
+        meta: { title: "路段詳情", icon: "dashboard" },
+      },
+      {
+        path: "roadGroup",
+        name: "roadGroup",
+        component: () => import("@/views/device/roadGroup/index.vue"),
+        meta: { title: "路段分組", icon: "dashboard" },
+      },
+      {
+        path: "timeControl",
+        name: "timeControl",
+        component: () => import("@/views/device/timeControl/index.vue"),
+        meta: { title: "時段控制", icon: "dashboard" },
+      },
+      {
+        path: "test2",
+        name: "test2",
+        component: () => import("@/views/test/test2/index.vue"),
+        meta: { title: "能見度控制", icon: "dashboard" },
       },
     ],
   },
@@ -130,24 +148,12 @@ export const constantRoutes = [
         component: () => import("@/views/userList/user/index.vue"),
         meta: { title: "用戶列表", icon: "dashboard" },
       },
-      {
-        path: "tcp",
-        name: "tcp",
-        component: () => import("@/views/userList/tcp/index.vue"),
-        meta: { title: "TCP設置", icon: "dashboard" },
-      },
-      {
-        path: "roadGroup",
-        name: "roadGroup",
-        component: () => import("@/views/userList/roadGroup/index.vue"),
-        meta: { title: "路段分組", icon: "dashboard" },
-      },
     ],
   },
   {
     path: "/reportForm",
     component: Layout,
-    redirect: "/reportForm/online",
+    redirect: "/reportForm/densefog",
     meta: {
       title: "資料回報",
       icon: "user",
@@ -155,16 +161,34 @@ export const constantRoutes = [
     alwaysShow: true,
     children: [
       {
+        path: "densefog",
+        name: "densefog",
+        component: () => import("@/views/reportForm/densefog/index.vue"),
+        meta: { title: "濃霧事件", icon: "dashboard" },
+      },
+      {
         path: "online",
         name: "online",
         component: () => import("@/views/reportForm/online/index.vue"),
-        meta: { title: "狀態資訊", icon: "dashboard" },
+        meta: { title: "設備狀態", icon: "dashboard" },
+      },
+      {
+        path: "roadLog",
+        name: "roadLog",
+        component: () => import("@/views/reportForm/roadLog/index.vue"),
+        meta: { title: "路段日誌", icon: "dashboard" },
       },
       {
         path: "operationLog",
         name: "operationLog",
         component: () => import("@/views/reportForm/operationLog/index.vue"),
-        meta: { title: "操作日誌", icon: "dashboard" },
+        meta: { title: "操作事件", icon: "dashboard" },
+      },
+      {
+        path: "personnel",
+        name: "personnel",
+        component: () => import("@/views/reportForm/personnel/index.vue"),
+        meta: { title: "人員登入", icon: "dashboard" },
       },
     ],
   },

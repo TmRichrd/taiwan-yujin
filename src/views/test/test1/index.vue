@@ -1,13 +1,23 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header" class="clearfix">
+      <div slot="header"
+           class="clearfix">
         <span>路段列表</span>
       </div>
-      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
-        @on-load="onLoad" :table-loading="loading">
-        <template slot="yellowLightForm">
-          <avue-crud :option="option1" :data="data1"></avue-crud>
+      <avue-crud :option="option"
+                 :page.sync="page"
+                 v-model="form"
+                 :data="data"
+                 :before-open="beforeOpen"
+                 @on-load="onLoad"
+                 :table-loading="loading">
+        <template slot="menu"
+                  slot-scope="{row}">
+          <el-button type="text"
+                     size="medium"
+                     icon="el-icon-edit"
+                     @click="handleDetail(row)">編 輯</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -20,55 +30,6 @@ let baseUrl = 'https://cli.avuejs.com/api/area'
 export default {
   data () {
     return {
-      data1: [],
-      option1: {
-        rowKey: "cid",
-        reserveSelection: true,
-        selection: true,
-        border: false,
-        size: "medium",
-        index: false,
-        headerAlign: 'center',
-        align: 'center',
-        addBtn: false,
-        searchIndex: 1,
-        searchIcon: true,
-        editBtn: false,
-        header: false,
-        delBtn: false,
-        menuSlot: true,
-        column: [
-          {
-            width: 130,
-            label: 'ID',
-            prop: 'cid',
-          },
-          {
-            label: "装置名称",
-            prop: "set_name",
-          },
-          {
-            label: '装置编号',
-            prop: 'jizhongqi',
-            slot: true,
-          },
-          {
-            label: '状态',
-            prop: 'on_status',
-            type: "select",
-            dicData: [
-              {
-                label: "在线",
-                value: 1
-              },
-              {
-                label: "离线",
-                value: 0
-              }
-            ]
-          },
-        ]
-      },
       loading: false,
       page: {
         currentPage: 1,
@@ -91,34 +52,24 @@ export default {
         searchMenuPosition: "left",
         editBtnText: "編 輯",
         delBtnText: "刪 除",
+        editBtn: false,
         column: [
           {
-            label: "ID",
-            display: false,
-            prop: "id",
-          },
-          {
-            label: "路段名",
+            label: "路段名稱",
             prop: "name",
-            span: 24,
+            span: 16,
             search: true,
-            rules: [{ required: true, message: "請輸入用戶名" }]
+            rules: [{ required: true, message: "請輸入路段名稱" }]
           },
           {
-            label: "路段描述",
+            label: "路段說明",
             prop: "desc",
             type: "textarea",
-            span: 24,
-          },
-          {
-            label: "路段里程",
-            prop: "licheng",
-            type: "number",
-            rules: [{ required: true, message: "請輸入路段里程" }],
-            span: 24,
+            span: 16,
           },
           {
             label: "路段分組",
+            prop: "danwei",
             hide: true,
             display: false,
             span: 24,
@@ -126,74 +77,51 @@ export default {
             type: "select"
           },
           {
-            label: '路段區域',
-            prop: 'area',
-            type: "cascader",
-            props: {
-              label: 'name',
-              value: 'code'
-            },
-            span: 24,
-            lazy: true,
-            lazyLoad (node, resolve) {
-              let stop_level = 2;
-              let level = node.level;
-              let data = node.data || {}
-              let code = data.code;
-              let list = [];
-              let callback = () => {
-                resolve((list || []).map(ele => {
-                  return Object.assign(ele, {
-                    leaf: level >= stop_level
-                  })
-                }));
-              }
-              if (level == 0)
-              {
-                axios.get(`${baseUrl}/getProvince`).then(res => {
-                  list = res.data;
-                  callback()
-                })
-              } else if (level == 1)
-              {
-                axios.get(`${baseUrl}/getCity/${code}`).then(res => {
-                  list = res.data;
-                  callback()
-                })
-              } else if (level == 2)
-              {
-                axios.get(`${baseUrl}/getArea/${code}`).then(res => {
-                  list = res.data;
-                  callback()
-                })
-              } else
-              {
-                callback()
-              }
-            }
+            label: "霧區閃光黃燈数量",
+            prop: "yellowLightNum",
+            display: false,
           },
           {
-            label: "管轄單位",
-            prop: "danwei",
-            span: 24,
+            label: "工作模式",
+            prop: "frequency",
+            display: false,
+            dicData: [
+              {
+                label: "30次/每分鐘",
+                value: 1
+              },
+              {
+                label: "60次/每分鐘",
+                value: 2
+              },
+              {
+                label: "90次/每分鐘",
+                value: 3
+              },
+              {
+                label: "120次/每分鐘",
+                value: 4
+              },
+            ]
+          },
+          {
+            label: "亮度",
+            prop: "brightness",
+            display: false,
           },
           {
             display: false,
             label: "創建日期",
             prop: "time",
           },
-          {
-            label: "霧區閃光黃燈",
-            prop: "yellowLight",
-            span: 24,
-            hide: true,
-            formSlot: true
-          }
         ],
       },
     };
   },
   methods: {
+    handleDetail (row) {
+      this.$router.push('/device/detail?id=' + row.id)
+    },
     beforeOpen (done, type) {
       if (["edit", "view"].includes(type))
       {
@@ -201,8 +129,6 @@ export default {
       done();
     },
     onLoad (page, params = {}) {
-
-
       const arr = [
         "N151K + 500~N147K + 700",
         "N124K +000~N121K + 700",
@@ -222,9 +148,11 @@ export default {
             name: `@pick(${arr})`,
             licheng: "@integer(1, 1000)",
             danwei: '單位' + '@integer(1, 10)',
-            desc: "@cparagraph(1)",
             area: "@county",
             time: "@datetime",
+            yellowLightNum: "@integer(1, 100)",
+            frequency: "@integer(1, 4)",
+            brightness: "@integer(1, 100)%"
           },
         ],
         total: 100,

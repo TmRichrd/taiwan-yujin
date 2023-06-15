@@ -5,7 +5,7 @@
         <span>路段列表</span>
       </div>
       <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
-        @on-load="onLoad" :table-loading="loading">
+        @on-load="onLoad" :table-loading="loading" @search-change="searchChange">
       </avue-crud>
     </el-card>
   </div>
@@ -37,6 +37,9 @@ export default {
         searchMenuSpan: 8,
         searchGutter: 40,
         searchMenuPosition: 'left',
+        addBtnText: "新增用戶",
+        editBtnText: "編輯用戶",
+        delBtnText: "刪除用戶",
         column: [{
           label: 'ID',
           prop: 'id',
@@ -69,22 +72,7 @@ export default {
           span: 13,
           searchSpan: 6,
         },
-        {
-          label: '最後登錄IP',
-          prop: 'last_login_ip',
-          span: 12,
-          offset: 2,
-          display: false,
-        },
-        {
-          label: '最後登錄時間',
-          prop: 'last_login_time',
-          format: "yyyy-MM-dd",
-          slot: true,
-          span: 12,
-          display: false,
-          offset: 2,
-        },
+
         {
           label: '電子信箱',
           prop: 'user_email',
@@ -101,11 +89,24 @@ export default {
           searchSpan: 6,
         },
         {
-          label: '公司名稱',
+          label: '用戶說明',
           prop: 'company_name',
           span: 13,
-          searchSpan: 6,
-          hide: true
+        },
+        {
+          label: "啟用狀態",
+          prop: "status",
+          type: "radio",
+          dicData: [
+            {
+              label: "啟用",
+              value: 1
+            },
+            {
+              label: "禁用",
+              value: 0
+            }
+          ]
         },
         {
           label: '所屬設備群組',
@@ -164,6 +165,22 @@ export default {
           searchSpan: 6,
           hide: true
         },
+        {
+          label: '最後登錄IP',
+          prop: 'last_login_ip',
+          span: 12,
+          offset: 2,
+          display: false,
+        },
+        {
+          label: '最後登錄時間',
+          prop: 'last_login_time',
+          format: "yyyy-MM-dd",
+          slot: true,
+          span: 12,
+          display: false,
+          offset: 2,
+        },
         ]
       },
     };
@@ -176,16 +193,20 @@ export default {
       }
       done()
     },
+    searchChange (params, done) {
+      done()
+    },
     onLoad (page, params = {}) {
       const data = Mock.mock({
         'list|10': [{
           'id|+1': 1,
-          'user_login': '@cname',
+          'user_login': '@name',
+          'status': '@integer(0, 1)',
           'password': '@word',
           'last_login_ip': '@ip',
           'last_login_time': '@datetime',
           'user_email': '@email',
-          'company_name': '@ctitle',
+          'company_name': '@title',
           'cat_ids|1': [1, 2],
           'role_ids|1': [0, 1, 2],
         }],

@@ -29,7 +29,7 @@
 
 <script>
 import Mock from "mockjs"
-import {constantRoutes} from "@/router"
+import { constantRoutes } from "@/router"
 export default {
   data () {
     return {
@@ -59,35 +59,38 @@ export default {
         align: 'center',
         dialogWidth: "40%",
         menuWidth: 300,
+        addBtnText: "新增權限",
+        editBtnText: "編輯權限",
+        delBtnText: "刪除權限",
         column: [{
           label: 'ID',
           prop: 'id',
           display: false,
         },
         {
-          label: '角色名稱',
+          label: '權限名稱',
           prop: 'name',
           rules: [{
             required: true,
-            message: "請輸入角色名稱",
+            message: "請輸入權限名稱",
             trigger: "blur"
           }],
           span: 12,
           offset: 4
         },
         {
-          label: '角色描述',
+          label: '權限說明',
           prop: 'remark',
           rules: [{
             required: true,
-            message: "請輸入角色描述",
+            message: "請輸入權限說明",
             trigger: "blur"
           }],
           span: 12,
           offset: 4
         },
         {
-          label: '狀態',
+          label: '啟用狀態',
           prop: 'status',
           type: "radio",
           span: 12,
@@ -108,11 +111,11 @@ export default {
       },
     };
   },
-  mounted() {
-  console.log('====================================');
-  console.log(constantRoutes);
-  console.log('====================================');
-  this.AuthList = constantRoutes
+  mounted () {
+    console.log('====================================');
+    console.log(constantRoutes);
+    console.log('====================================');
+    this.AuthList = constantRoutes
   },
   methods: {
     beforeOpen (done, type) {
@@ -131,7 +134,7 @@ export default {
           'list|10': [{
             'id|+1': 1,
             'name': `@pick(${arr})`,
-            'remark': '@cword(2,10)',
+            'remark': '',
             'status|1': [0, 1],
           }],
           page: {
@@ -169,7 +172,7 @@ export default {
     background: none !important;
   }
 
-  .is-current.is-focusable > .el-tree-node__content {
+  .is-current.is-focusable>.el-tree-node__content {
     background: #177ddc !important;
   }
 }

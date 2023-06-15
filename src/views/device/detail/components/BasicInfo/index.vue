@@ -1,44 +1,17 @@
 <template>
   <div class="basic-info">
     <el-row :gutter="20">
-      <el-col :span="12">
+      <el-col :span="24">
         <el-card style="margin-bottom: 20px;">
-          <div slot="header" class="clearfix">
+          <div slot="header"
+               class="clearfix">
             <span>基本信息</span>
           </div>
-          <avue-form :option="option" @submit="submit" class="system-form" v-model="form">
-            <template slot="gps">
-              <el-button type="primary" icon="el-icon-view" @click="handleViewGps" size="medium">查 看</el-button>
-            </template>
-            <template slot="create_time">
-              <div class="basic-info-text">
-                {{ form.create_time }}
-              </div>
-            </template>
+          <avue-form :option="option"
+                     @submit="submit"
+                     class="system-form"
+                     v-model="form">
           </avue-form>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card style="margin-bottom: 20px;">
-          <div slot="header" class="clearfix">
-            <span>運行方案</span>
-          </div>
-          <avue-form class="system-form" :option="menuOption" @submit="handleSubmitMenuForm" v-model="menuform">
-            <template slot="time_control">
-              <el-button type="primary" size="medium">設 置</el-button>
-            </template>
-            <template slot="read_param">
-              <el-button type="primary" size="medium">一鍵回報</el-button>
-            </template>
-          </avue-form>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="24">
-        <el-card>
-          <avue-crud :option="option1" :data="data1">
-          </avue-crud>
         </el-card>
       </el-col>
     </el-row>
@@ -54,7 +27,7 @@ export default {
       },
       data1: [
         {
-          
+
         }
       ],
       option1: {
@@ -156,42 +129,48 @@ export default {
         span: 8,
         size: "large",
         labelWidth: 110,
-        labelPosition: "top",
+        // labelPosition: "top",
         submitText: "保 存",
         emptyBtn: false,
         column: [
           {
-            label: "地圖定位",
-            prop: "gps",
-            span: 12,
+            label: "路段名稱",
+            prop: "name",
+            span: 13,
+            rules: [
+              {
+                required: true,
+                message: "請輸入路段名稱"
+              }
+            ]
           },
 
           {
-            label: "創建時間",
-            prop: "create_time",
-            span: 12,
+            label: "路段說明",
+            prop: "desc",
+            span: 13,
+            type: "textarea"
           },
-          {
-            label: "安裝圖片",
-            type: "upload",
-            prop: "install_img",
-            // action: "/api/tuopu/yjzz/savefile",
-            accept: "image/*",
-            // tip: "只能上传图片文件，且不超过10M",
-            fileType: 'img',
-            dataType: "object",
-            propsHttp: {
-              res: "data",
-              url: "url",
-              fileName: "image"
-            },
-            limit: 9,
-            listType: "picture-card",
-            fileList: [],
-            fileSize: 1024 * 10,
-            multiple: true,
-            slot: true,
-          },]
+          // {
+          //   label: "安裝圖片",
+          //   type: "upload",
+          //   prop: "install_img",
+          //   accept: "image/*",
+          //   fileType: 'img',
+          //   dataType: "object",
+          //   propsHttp: {
+          //     res: "data",
+          //     url: "url",
+          //     fileName: "image"
+          //   },
+          //   limit: 9,
+          //   listType: "picture-card",
+          //   fileList: [],
+          //   fileSize: 1024 * 10,
+          //   multiple: true,
+          //   slot: true,
+          // },
+        ]
       },
       menuform: {},
       menuOption: {
@@ -310,7 +289,7 @@ export default {
 }
 
 .system-form {
-  height: 310px !important;
+  /* height: 310px !important; */
   /* height: 520px !important; */
 }
 
