@@ -5,7 +5,8 @@
       <span v-else>霧區閃光黃燈管理平台</span>
       <div class="time">
         <span style="font-size: 24px;">GPS校時 </span>
-        <span class="Digital" style="margin-right:20px">{{ newYear }}</span>
+        <span class="Digital"
+              style="margin-right:20px">{{ newYear }}</span>
         <span class="Digital">{{ newTime }}</span>
       </div>
     </div>
@@ -30,32 +31,43 @@
               </div>
             </div>
             <div class="con-right">
-              <div class="status-pie" id="status-pie"></div>
+              <div class="status-pie"
+                   id="status-pie"></div>
             </div>
           </div>
         </div>
         <div class="index-box">
           <div class="title">電量統計</div>
           <div class="con-texts">
-            <el-row :gutter="20" style="margin-left:20px;">
+            <el-row :gutter="20"
+                    style="margin-left:20px;">
               <el-col :span="6">
                 <span class="green">
-                  <img src="@/assets/images/dc3.png" style="width: 64px;" alt="">
+                  <img src="@/assets/images/dc3.png"
+                       style="width: 64px;"
+                       alt="">
                 </span>
               </el-col>
               <el-col :span="6">
                 <span class="yellow">
-                  <img src="@/assets/images/dc2.png" style="width: 64px;" alt="">
+                  <img src="@/assets/images/dc2.png"
+                       style="width: 64px;"
+                       alt="">
                 </span>
               </el-col>
               <el-col :span="6">
-                <img src="@/assets/images/dc1.png" style="width: 64px;" alt="">
+                <img src="@/assets/images/dc1.png"
+                     style="width: 64px;"
+                     alt="">
               </el-col>
               <el-col :span="6">
-                <img src="@/assets/images/dc0.png" style="width: 64px;" alt="">
+                <img src="@/assets/images/dc0.png"
+                     style="width: 64px;"
+                     alt="">
               </el-col>
             </el-row>
-            <el-row :gutter="20" style="margin-left:20px;">
+            <el-row :gutter="20"
+                    style="margin-left:20px;">
               <el-col :span="6">
                 <span class="c1">2368</span>
               </el-col>
@@ -69,7 +81,8 @@
                 <span class="c4">5</span>
               </el-col>
             </el-row>
-            <el-row :gutter="20" style="margin-left:20px;margin-top:20px">
+            <el-row :gutter="20"
+                    style="margin-left:20px;margin-top:20px">
               <el-col :span="6">
                 <span class="c1">≥80%</span>
               </el-col>
@@ -88,9 +101,12 @@
         </div>
         <div class="index-box">
           <div class="title">資料回報</div>
-          <div class="cont-texts" style="padding-top:20px;height:100%">
-            <dv-scroll-board :config="config1" ref="scrollBoard" v-if="config1.data.length"
-              style="width:100%;height:100%" />
+          <div class="cont-texts"
+               style="padding-top:20px;height:100%">
+            <dv-scroll-board :config="config1"
+                             ref="scrollBoard"
+                             v-if="config1.data.length"
+                             style="width:100%;height:100%" />
           </div>
         </div>
 
@@ -99,7 +115,9 @@
       <div class="center-map">
         <div class="map-title">地圖概覽</div>
         <div class="map-wrap four-border">
-          <img src="@/assets/images/map.png" class="map" alt="">
+          <img src="@/assets/images/map.png"
+               class="map"
+               alt="">
           <!-- <baidu-map class="map" :scroll-wheel-zoom="true" :center="markArr[0]" :zoom="6" @ready="mapReady">
             <template v-for="(item, index) in dotArr">
               <bm-marker v-if="item.gps" :key="index" :position="item.gps" @dblclick="toDotDetail($event, item)"
@@ -118,20 +136,19 @@
         <div class="charts_title">事件資訊</div>
         <div class="center-charts">
           <el-row style="height:100%">
-            <dv-scroll-board :config="config2" ref="scrollBoard" v-if="config2.data.length"
-              style="width:100%;height:100%" />
+            <dv-scroll-board :config="config2"
+                             ref="scrollBoard"
+                             v-if="config2.data.length"
+                             style="width:100%;height:100%" />
           </el-row>
         </div>
       </div>
       <div class="box-right">
         <div class="index-box hindex-box">
-          <div class="title" style="height:5%">運作狀態</div>
+          <div class="title"
+               style="height:5%">運作狀態</div>
           <div class="con-text">
             <div class="con-left">
-              <div class="col">
-                <span class="col-label">激活設備</span>
-                <span class="col-num Digital huanbi">2468</span>
-              </div>
               <div class="col">
                 <span class="col-label">啟動</span>
                 <span class="col-num Digital huanbi">1000</span>
@@ -146,15 +163,19 @@
               </div>
             </div>
             <div class="con-right">
-              <div class="redian" id="redian"></div>
+              <div class="redian"
+                   id="redian"></div>
             </div>
           </div>
         </div>
         <div class="index-box hindex-box">
           <div class="title">路段數據</div>
-          <div class="cont-texts" style="padding-top:20px;height:81.5%">
-            <dv-scroll-board :config="config" ref="scrollBoard" v-if="config.data.length"
-              style="width:100%;height:100%" />
+          <div class="cont-texts"
+               style="padding-top:20px;height:81.5%">
+            <dv-scroll-board :config="config"
+                             ref="scrollBoard"
+                             v-if="config.data.length"
+                             style="width:100%;height:100%" />
           </div>
         </div>
       </div>
@@ -369,7 +390,6 @@ export default {
               }
             },
             data: [
-              { value: 2468 || 0, name: '激活設備' },
               { value: 1000 || 0, name: '啟動' },
               { value: 1463 || 0, name: '關閉及正常' },
               { value: 68 || 0, name: '異常' },
@@ -987,11 +1007,14 @@ export default {
   height: 85%;
 }
 
-.green {}
+.green {
+}
 
-.yellow {}
+.yellow {
+}
 
-.red {}
+.red {
+}
 
 #electricity {
   height: 90%;
@@ -1002,14 +1025,14 @@ export default {
 }
 
 .c2 {
-  color: #A9D08E;
+  color: #a9d08e;
 }
 
 .c3 {
-  color: #ED7D31
+  color: #ed7d31;
 }
 
 .c4 {
-  color: #FF0000;
+  color: #ff0000;
 }
 </style>
