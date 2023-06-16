@@ -44,12 +44,9 @@ export default {
         align: 'center',
         dialogWidth: "40%",
         labelWidth: 140,
-        searchSpan: 6,
         searchIndex: 3,
         searchIcon: true,
-        searchMenuSpan: 6,
         searchGutter: 40,
-        searchMenuPosition: 'left',
         searchLabelWidth: 100,
         editBtn: false,
         addBtn: false,
@@ -92,6 +89,7 @@ export default {
             prop: "highway_id",
             search: true
           },
+
           {
             label: "起始公里數",
             prop: "start_km",
@@ -104,6 +102,12 @@ export default {
             label: "能見度等級",
             prop: "visibility_level",
             search: true,
+          },
+          {
+            label: "里程",
+            prop: "licheng",
+            hide: true,
+            search: true
           },
           {
             label: "發生日期及時間",

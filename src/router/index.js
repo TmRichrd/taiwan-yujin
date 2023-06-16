@@ -55,7 +55,25 @@ export const constantRoutes = [
         path: "dashboard",
         name: "Dashboard",
         component: () => import("@/views/dashboard/index"),
-        meta: { title: "工作臺", icon: "dashboard" },
+        meta: { title: "首頁", icon: "dashboard" },
+      },
+    ],
+  },
+  {
+    path: "/devices",
+    component: Layout,
+    redirect: "/devices/light",
+    meta: {
+      title: "設備管理",
+      icon: "el-icon-s-tools",
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: "light",
+        name: "light",
+        component: () => import("@/views/device/light/index.vue"),
+        meta: { title: "閃光黃燈", icon: "el-icon-s-opportunity" },
       },
     ],
   },
@@ -64,7 +82,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: "/test/test1",
     meta: {
-      title: "路段管理",
+      title: "群組管理",
       icon: "el-icon-place",
     },
     alwaysShow: true,
@@ -73,7 +91,7 @@ export const constantRoutes = [
         path: "test1",
         name: "test1",
         component: () => import("@/views/test/test1/index.vue"),
-        meta: { title: "路段列表", icon: "el-icon-location-outline" },
+        meta: { title: "路段總況", icon: "el-icon-location-outline" },
       },
     ],
   },
@@ -82,7 +100,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: "/device/light",
     meta: {
-      title: "系統設置",
+      title: "系統設定",
       icon: "el-icon-s-tools",
     },
     alwaysShow: true,
@@ -93,12 +111,7 @@ export const constantRoutes = [
         component: () => import("@/views/device/tcp/index.vue"),
         meta: { title: "TCP設定", icon: "el-icon-s-platform" },
       },
-      {
-        path: "light",
-        name: "light",
-        component: () => import("@/views/device/light/index.vue"),
-        meta: { title: "閃光黃燈", icon: "el-icon-s-opportunity" },
-      },
+
       {
         path: "detail",
         name: "detail",
@@ -140,7 +153,7 @@ export const constantRoutes = [
         path: "role",
         name: "role",
         component: () => import("@/views/userList/role/index.vue"),
-        meta: { title: "權限管理", icon: "el-icon-s-flag" },
+        meta: { title: "角色管理", icon: "el-icon-s-flag" },
       },
       {
         path: "user",
@@ -155,7 +168,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: "/reportForm/densefog",
     meta: {
-      title: "資料回報",
+      title: "紀錄查詢",
       icon: "el-icon-data-line",
     },
     alwaysShow: true,

@@ -25,20 +25,6 @@
 
 <script>
 export default {
-  watch: {
-    'form.light_select' (val) {
-      if (val == 1)
-      {
-        this.defaults.time_list.display = true
-        this.defaults.visibility_list.display = true
-
-      } else
-      {
-        this.defaults.time_list.display = false
-        this.defaults.visibility_list.display = false
-      }
-    }
-  },
   data () {
     return {
       loading: false,
@@ -90,7 +76,6 @@ export default {
             prop: "time_list",
             span: 6,
             type: "select",
-            display: false,
           },
           {
             label: "能見度列表",
@@ -98,7 +83,6 @@ export default {
             span: 6,
             offset: 7,
             type: "select",
-            display: false,
 
           },
           // {
