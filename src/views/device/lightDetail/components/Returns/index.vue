@@ -12,6 +12,10 @@
                  :before-open="beforeOpen"
                  @on-load="onLoad"
                  :table-loading="loading">
+        <template slot="time"
+                  slot-scope="{row}">
+          <span>{{row.time}}</span>
+        </template>
       </avue-crud>
     </el-card>
   </div>
