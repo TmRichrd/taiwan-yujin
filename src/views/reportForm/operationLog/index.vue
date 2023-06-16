@@ -1,11 +1,22 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header" class="clearfix">
+      <div slot="header"
+           class="clearfix">
         <span>操作事件</span>
       </div>
-      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
-        @on-load="onLoad" :table-loading="loading" @search-change="searchChange">
+      <avue-crud :option="option"
+                 :page.sync="page"
+                 v-model="form"
+                 :data="data"
+                 :before-open="beforeOpen"
+                 @on-load="onLoad"
+                 :table-loading="loading"
+                 @search-change="searchChange">
+        <template slot="time"
+                  slot-scope="{row}">
+          {{row.time}}
+        </template>
       </avue-crud>
     </el-card>
   </div>

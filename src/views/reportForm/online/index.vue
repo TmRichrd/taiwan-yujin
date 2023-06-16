@@ -13,6 +13,10 @@
                  @on-load="onLoad"
                  :table-loading="loading"
                  @search-change="searchChange">
+        <template slot="time"
+                  slot-scope="{row}">
+          {{row.time}}
+        </template>
       </avue-crud>
     </el-card>
   </div>
