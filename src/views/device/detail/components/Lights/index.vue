@@ -101,7 +101,6 @@
                   <el-table-column prop="menu"
                                    label="操作"
                                    align="center">
-
                   </el-table-column>
                 </el-table>
               </div>
@@ -140,7 +139,6 @@
 
 <script>
 
-// import { getFogLamp, saveFogLamp } from '@/api'
 import Mock from 'mockjs';
 
 export default {
