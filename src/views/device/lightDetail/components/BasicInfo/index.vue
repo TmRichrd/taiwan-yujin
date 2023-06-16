@@ -58,6 +58,10 @@
           <avue-crud :option="option1"
                      @on-load='onLoad'
                      :data="data1">
+            <template slot="time"
+                      slot-scope="{row}">
+              <span>{{row.time}}</span>
+            </template>
           </avue-crud>
         </el-card>
       </el-col>
