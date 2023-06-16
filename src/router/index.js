@@ -75,6 +75,13 @@ export const constantRoutes = [
         component: () => import("@/views/device/light/index.vue"),
         meta: { title: "閃光黃燈", icon: "el-icon-s-opportunity" },
       },
+      {
+        path: "lightDetail",
+        name: "lightDetail",
+        hidden: true,
+        component: () => import("@/views/device/lightDetail/index.vue"),
+        meta: { title: "閃光黃燈详情", icon: "el-icon-s-opportunity" },
+      },
     ],
   },
   {

@@ -12,6 +12,13 @@
                  :before-open="beforeOpen"
                  @on-load="onLoad"
                  :table-loading="loading">
+        <template slot="menu"
+                  slot-scope="{row}">
+          <el-button type="text"
+                     icon="el-icon-info"
+                     @click="handleDetail(row)"
+                     size="small">詳 情</el-button>
+        </template>
       </avue-crud>
     </el-card>
   </div>
@@ -304,15 +311,15 @@ export default {
     };
   },
   methods: {
+    handleDetail (row) {
+      this.$router.push("/devices/lightDetail?id=" + row.id + "&yjzz_no=" + row.equipment_number)
+    },
     beforeOpen (done, type) {
       if (["edit", "view"].includes(type))
       {
 
       }
       done()
-    },
-    handleDetail () {
-      this.$router.push('/device/detail')
     },
     onLoad (page, params = {}) {
       this.loading = true;
@@ -326,6 +333,7 @@ export default {
           total: 100,
           [`list|${page.pageSize}`]: [
             {
+              "id|+1": 1,
               equipment_number: "FI-N1-S-140.150-O",
               ip: "@ip",
               status: "@integer(0, 1)",
