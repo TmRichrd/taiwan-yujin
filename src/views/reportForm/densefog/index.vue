@@ -13,6 +13,11 @@
                  @on-load="onLoad"
                  :table-loading="loading"
                  @search-change="searchChange">
+        <template slot="menuLeft">
+          <el-button type="primary"
+                     icon="el-icon-download"
+                     size="small">匯 出</el-button>
+        </template>
         <template slot="time"
                   slot-scope="{row}">
           {{row.time}}

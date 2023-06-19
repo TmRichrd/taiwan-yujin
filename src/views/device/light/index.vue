@@ -18,6 +18,9 @@
                      icon="el-icon-info"
                      @click="handleDetail(row)"
                      size="small">詳 情</el-button>
+          <el-button type="text"
+                     icon="el-icon-download"
+                     size="small">匯 出</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -55,6 +58,7 @@ export default {
         searchMenuSpan: 6,
         searchGutter: 40,
         searchMenuPosition: 'left',
+        menuWidth: 300,
         column: [
           {
             label: "設備編號",
