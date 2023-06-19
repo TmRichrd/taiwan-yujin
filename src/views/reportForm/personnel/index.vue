@@ -50,6 +50,7 @@ export default {
         searchMenuPosition: 'left',
         menu: false,
         addBtn: false,
+        columnBtn: false,
         column: [
           {
             label: "紀錄時間",

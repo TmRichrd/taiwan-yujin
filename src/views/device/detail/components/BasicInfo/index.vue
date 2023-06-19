@@ -194,13 +194,13 @@ export default {
             offset: 3,
           },
           {
-            label: "時間段控制",
+            label: "時段控制",
             prop: "time_control",
             offset: 3,
             type: "select",
           },
           {
-            label: "占空比",
+            label: "工作週期",
             prop: "duty_ratio",
             type: "select",
           },

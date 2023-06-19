@@ -18,6 +18,9 @@
                      size="medium"
                      icon="el-icon-edit"
                      @click="handleDetail(row)">編 輯</el-button>
+          <el-button type="text"
+                     size="medium"
+                     icon="el-icon-delete">刪 除</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -50,9 +53,9 @@ export default {
         searchMenuSpan: 8,
         searchGutter: 40,
         searchMenuPosition: "left",
-        editBtnText: "編 輯",
-        delBtnText: "刪 除",
+        delBtn: false,
         editBtn: false,
+        columnBtn: false,
         column: [
           {
             label: "路段名稱",

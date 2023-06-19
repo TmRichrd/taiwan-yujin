@@ -31,10 +31,9 @@
                                    width="120" />
                   <el-table-column label="電池電量"
                                    align="center">
-                    <template slot-scope="scope">
+                    <template slot-scope="{row}">
                       <div class="elec-wrap">
-                        <i class="fa"
-                           :class="eleOpt[scope.row.dianliang]" />
+                        <span>{{row.dianliang}}%</span>
                       </div>
                     </template>
                   </el-table-column>
@@ -53,7 +52,7 @@
                                    label="操作"
                                    align="center">
                     <el-button type="text"
-                               icon="el-icon-delete">删除</el-button>
+                               icon="el-icon-delete">刪除</el-button>
                   </el-table-column>
                 </el-table>
               </div>
@@ -80,10 +79,9 @@
                                    width="120" />
                   <el-table-column label="電池電量"
                                    align="center">
-                    <template slot-scope="scope">
+                    <template slot-scope="{row}">
                       <div class="elec-wrap">
-                        <i class="fa"
-                           :class="eleOpt[scope.row.dianliang]" />
+                        <span>{{row.dianliang}}%</span>
                       </div>
                     </template>
                   </el-table-column>
@@ -101,6 +99,8 @@
                   <el-table-column prop="menu"
                                    label="操作"
                                    align="center">
+                    <el-button type="text"
+                               icon="el-icon-delete">刪除</el-button>
                   </el-table-column>
                 </el-table>
               </div>
@@ -294,7 +294,7 @@ export default {
           "id": 66791,
           "jizhongqi": "00ff",
           "light_no": "000000",
-          "dianliang": "02",
+          "dianliang": "80",
           "State": "0",
           "create_date": 1673399162,
           "modify_date": null,
@@ -304,7 +304,7 @@ export default {
           "id": 66759,
           "jizhongqi": "00ff",
           "light_no": "000001",
-          "dianliang": "05",
+          "dianliang": "95",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -314,7 +314,7 @@ export default {
           "id": 66760,
           "jizhongqi": "00ff",
           "light_no": "000002",
-          "dianliang": "be",
+          "dianliang": "50",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -324,7 +324,7 @@ export default {
           "id": 66761,
           "jizhongqi": "00ff",
           "light_no": "000003",
-          "dianliang": "fd",
+          "dianliang": "80",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -334,7 +334,7 @@ export default {
           "id": 66791,
           "jizhongqi": "00ff",
           "light_no": "000000",
-          "dianliang": "02",
+          "dianliang": "59",
           "State": "0",
           "create_date": 1673399162,
           "modify_date": null,
@@ -344,7 +344,7 @@ export default {
           "id": 66759,
           "jizhongqi": "00ff",
           "light_no": "000001",
-          "dianliang": "05",
+          "dianliang": "87",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -354,7 +354,7 @@ export default {
           "id": 66760,
           "jizhongqi": "00ff",
           "light_no": "000002",
-          "dianliang": "be",
+          "dianliang": "65",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -364,7 +364,7 @@ export default {
           "id": 66761,
           "jizhongqi": "00ff",
           "light_no": "000003",
-          "dianliang": "fd",
+          "dianliang": "45",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -374,7 +374,7 @@ export default {
           "id": 66791,
           "jizhongqi": "00ff",
           "light_no": "000000",
-          "dianliang": "02",
+          "dianliang": "67",
           "State": "0",
           "create_date": 1673399162,
           "modify_date": null,
@@ -384,7 +384,7 @@ export default {
           "id": 66759,
           "jizhongqi": "00ff",
           "light_no": "000001",
-          "dianliang": "05",
+          "dianliang": "78",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -394,7 +394,7 @@ export default {
           "id": 66760,
           "jizhongqi": "00ff",
           "light_no": "000002",
-          "dianliang": "be",
+          "dianliang": "47",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -404,7 +404,7 @@ export default {
           "id": 66761,
           "jizhongqi": "00ff",
           "light_no": "000003",
-          "dianliang": "fd",
+          "dianliang": "98",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -414,7 +414,7 @@ export default {
           "id": 66791,
           "jizhongqi": "00ff",
           "light_no": "000000",
-          "dianliang": "02",
+          "dianliang": "20",
           "State": "0",
           "create_date": 1673399162,
           "modify_date": null,
@@ -424,7 +424,7 @@ export default {
           "id": 66759,
           "jizhongqi": "00ff",
           "light_no": "000001",
-          "dianliang": "05",
+          "dianliang": "46",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -434,7 +434,7 @@ export default {
           "id": 66760,
           "jizhongqi": "00ff",
           "light_no": "000002",
-          "dianliang": "be",
+          "dianliang": "68",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -444,7 +444,7 @@ export default {
           "id": 66761,
           "jizhongqi": "00ff",
           "light_no": "000003",
-          "dianliang": "fd",
+          "dianliang": "46",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -454,7 +454,7 @@ export default {
           "id": 66791,
           "jizhongqi": "00ff",
           "light_no": "000000",
-          "dianliang": "02",
+          "dianliang": "86",
           "State": "0",
           "create_date": 1673399162,
           "modify_date": null,
@@ -464,7 +464,7 @@ export default {
           "id": 66759,
           "jizhongqi": "00ff",
           "light_no": "000001",
-          "dianliang": "05",
+          "dianliang": "65",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -474,7 +474,7 @@ export default {
           "id": 66760,
           "jizhongqi": "00ff",
           "light_no": "000002",
-          "dianliang": "be",
+          "dianliang": "89",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -484,7 +484,7 @@ export default {
           "id": 66761,
           "jizhongqi": "00ff",
           "light_no": "000003",
-          "dianliang": "fd",
+          "dianliang": "92",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -494,7 +494,7 @@ export default {
           "id": 66791,
           "jizhongqi": "00ff",
           "light_no": "000000",
-          "dianliang": "02",
+          "dianliang": "87",
           "State": "0",
           "create_date": 1673399162,
           "modify_date": null,
@@ -504,7 +504,7 @@ export default {
           "id": 66759,
           "jizhongqi": "00ff",
           "light_no": "000001",
-          "dianliang": "05",
+          "dianliang": "45",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -514,7 +514,7 @@ export default {
           "id": 66760,
           "jizhongqi": "00ff",
           "light_no": "000002",
-          "dianliang": "be",
+          "dianliang": "36",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,
@@ -524,7 +524,7 @@ export default {
           "id": 66761,
           "jizhongqi": "00ff",
           "light_no": "000003",
-          "dianliang": "fd",
+          "dianliang": "68",
           "State": "1",
           "create_date": 1673399162,
           "modify_date": 1677032823,

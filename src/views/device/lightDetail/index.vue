@@ -4,7 +4,7 @@
       <el-tabs type="card"
                v-model="activeName"
                class="box-nav">
-        <el-tab-pane label="基本信息"
+        <el-tab-pane label="基本訊息"
                      name="1">
           <BasicInfo v-if="activeName === '1'" />
         </el-tab-pane>
@@ -20,7 +20,7 @@
       <div class="back">
         <div class="back-btn"
              @click="handleGoBack">
-          <i class="el-icon-arrow-left"></i>返回上級
+          <i class="el-icon-arrow-left"></i>返回
         </div>
       </div>
     </div>

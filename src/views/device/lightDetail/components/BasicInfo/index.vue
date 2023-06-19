@@ -5,27 +5,19 @@
         <el-card style="margin-bottom: 20px;">
           <div slot="header"
                class="clearfix">
-            <span>基本信息</span>
+            <span>基本訊息</span>
           </div>
           <avue-form :option="option"
                      @submit="submit"
                      class="system-form"
                      v-model="form">
-            <template slot="gps">
-              <el-button type="primary"
-                         icon="el-icon-view"
-                         @click="handleViewGps"
-                         size="medium">查 看</el-button>
-            </template>
             <template slot="create_time">
               <div class="basic-info-text">
                 {{ form.create_time }}
               </div>
             </template>
             <template slot="Battery">
-              <img src="@/assets/images/ele_green.png"
-                   style="width:40px"
-                   alt="">
+              <span class="basic-info-text">{{form.Battery}}%</span>
             </template>
           </avue-form>
         </el-card>
@@ -34,7 +26,7 @@
         <el-card style="margin-bottom: 20px;">
           <div slot="header"
                class="clearfix">
-            <span>運行方案</span>
+            <span>運作方案</span>
           </div>
           <avue-form class="system-form"
                      :option="menuOption"
@@ -46,7 +38,7 @@
             </template>
             <template slot="read_param">
               <el-button type="primary"
-                         size="medium">一鍵回報</el-button>
+                         size="medium">立即回報</el-button>
             </template>
           </avue-form>
         </el-card>
@@ -75,7 +67,8 @@ export default {
   data () {
     return {
       form: {
-        create_time: '2023-06-05 12:00:00'
+        create_time: '2023-06-05 12:00:00',
+        Battery: "80"
       },
       data1: [
         {
@@ -174,7 +167,7 @@ export default {
             disabled: true
           },
           {
-            label: "设备名称",
+            label: "設備名稱",
             offset: 2,
           },
           {
@@ -182,13 +175,8 @@ export default {
             offset: 2,
           },
           {
-            label: "運營商",
-            type: "select"
-          },
-          {
             label: "設備電量",
             prop: "Battery",
-            offset: 2,
             slot: true,
           },
           {
@@ -241,13 +229,13 @@ export default {
             offset: 3,
           },
           {
-            label: "時間段控制",
+            label: "時段控制",
             prop: "time_control",
             offset: 3,
             type: "select",
           },
           {
-            label: "佔空比",
+            label: "工作週期",
             prop: "duty_ratio",
             type: "select",
           },
@@ -292,7 +280,7 @@ export default {
 <style lang="scss" scoped>
 .basic-info-text {
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 

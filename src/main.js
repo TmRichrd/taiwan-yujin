@@ -6,6 +6,7 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import locale from "element-ui/lib/locale/lang/zh-TW"; // lang i18n
 import Avue from "@smallwei/avue";
+import zhTWLocale from "@/i18n/zh-TW";
 import "@smallwei/avue/lib/index.css";
 import "@/styles/index.scss"; // global css
 
@@ -31,7 +32,7 @@ if (process.env.NODE_ENV === "production") {
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale });
-Vue.use(Avue);
+Vue.use(Avue, { locale: zhTWLocale });
 
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)

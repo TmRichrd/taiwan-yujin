@@ -51,6 +51,7 @@ export default {
         editBtn: false,
         addBtn: false,
         menu: false,
+        columnBtn: false,
         column: [
           {
             label: "紀錄時間",

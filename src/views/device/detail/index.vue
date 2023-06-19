@@ -24,7 +24,7 @@
       <div class="back">
         <div class="back-btn"
              @click="handleGoBack">
-          <i class="el-icon-arrow-left"></i>返回上級
+          <i class="el-icon-arrow-left"></i>返回
         </div>
       </div>
     </div>

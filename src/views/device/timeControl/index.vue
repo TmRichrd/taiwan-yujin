@@ -43,6 +43,7 @@ export default {
         searchMenuSpan: 8,
         searchGutter: 40,
         searchMenuPosition: 'left',
+        columnBtn: false,
         column: [
           {
             label: "起始時間",

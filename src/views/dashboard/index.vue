@@ -4,7 +4,6 @@
       <span v-if="companyName">{{ companyName }}道路预警平台</span>
       <span v-else>霧區閃光黃燈管理平台</span>
       <div class="time">
-        <span style="font-size: 24px;">GPS校時 </span>
         <span class="Digital"
               style="margin-right:20px">{{ newYear }}</span>
         <span class="Digital">{{ newTime }}</span>
@@ -18,7 +17,7 @@
           <div class="con-text">
             <div class="con-left">
               <div class="col">
-                <span class="col-label">激活設備</span>
+                <span class="col-label">啟用設備</span>
                 <span class="col-num Digital huanbi">{{ pieData.jihuoshu }}</span>
               </div>
               <div class="col">
@@ -391,7 +390,7 @@ export default {
             },
             data: [
               { value: 1000 || 0, name: '啟動' },
-              { value: 1463 || 0, name: '關閉及正常' },
+              { value: 1463 || 0, name: '關閉' },
               { value: 68 || 0, name: '異常' },
             ]
           }
@@ -1022,17 +1021,21 @@ export default {
 
 .c1 {
   color: #375623;
+  font-size: 20px;
 }
 
 .c2 {
   color: #a9d08e;
+  font-size: 20px;
 }
 
 .c3 {
   color: #ed7d31;
+  font-size: 20px;
 }
 
 .c4 {
   color: #ff0000;
+  font-size: 20px;
 }
 </style>

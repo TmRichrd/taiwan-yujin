@@ -141,7 +141,7 @@ export default {
               type: 'image',
               thumb: 'url'
             },
-            tip: "只能上传图片文件，且不超过10M",
+            tip: "只能上傳圖片檔，且不超過10M",
             accept: "image/*",
             fileType: 'img',
             dataType: "object",

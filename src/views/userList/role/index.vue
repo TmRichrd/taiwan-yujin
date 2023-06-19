@@ -1,25 +1,43 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header" class="clearfix">
+      <div slot="header"
+           class="clearfix">
         <span>權限管理</span>
       </div>
-      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
-        @on-load="onLoad" :table-loading="loading">
+      <avue-crud :option="option"
+                 :page.sync="page"
+                 v-model="form"
+                 :data="data"
+                 :before-open="beforeOpen"
+                 @on-load="onLoad"
+                 :table-loading="loading">
         <template slot="menu">
-          <el-button type="text" icon="el-icon-lock" @click="dialog = true">權限設置</el-button>
+          <el-button type="text"
+                     icon="el-icon-lock"
+                     @click="dialog = true">權限設置</el-button>
         </template>
       </avue-crud>
     </el-card>
-    <el-dialog :visible.sync="dialog" width="640px" title="修改權限">
+    <el-dialog :visible.sync="dialog"
+               width="640px"
+               title="修改權限">
       <div class="dialog-content role-list">
         <div style="padding:20px 0">
-          <el-tree ref="tree" :props="defaultProps" :data="AuthList" show-checkbox node-key="url" />
+          <el-tree ref="tree"
+                   :props="defaultProps"
+                   :data="AuthList"
+                   show-checkbox
+                   node-key="url" />
         </div>
-        <div slot="footer" class="dialog-footer">
+        <div slot="footer"
+             class="dialog-footer">
           <div class="dialog-btn-wrap">
-            <el-button type="primary" class="btn" @click="dialog = false">確 定</el-button>
-            <el-button class="btn transparent-btn" @click="dialog = false">取 消</el-button>
+            <el-button type="primary"
+                       class="btn"
+                       @click="dialog = false">確 定</el-button>
+            <el-button class="btn transparent-btn"
+                       @click="dialog = false">取 消</el-button>
           </div>
         </div>
       </div>
@@ -62,6 +80,7 @@ export default {
         addBtnText: "新增權限",
         editBtnText: "編輯權限",
         delBtnText: "刪除權限",
+        columnBtn: false,
         column: [{
           label: 'ID',
           prop: 'id',
@@ -98,7 +117,7 @@ export default {
           value: 1,
           dicData: [
             {
-              label: "啓用",
+              label: "啟用",
               value: 1
             },
             {
@@ -172,7 +191,7 @@ export default {
     background: none !important;
   }
 
-  .is-current.is-focusable>.el-tree-node__content {
+  .is-current.is-focusable > .el-tree-node__content {
     background: #177ddc !important;
   }
 }
