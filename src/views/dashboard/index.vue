@@ -153,7 +153,7 @@
                 <span class="col-num Digital huanbi">1000</span>
               </div>
               <div class="col">
-                <span class="col-label">關閉及正常</span>
+                <span class="col-label">關閉</span>
                 <span class="col-num Digital huanbi">1463</span>
               </div>
               <div class="col">
