@@ -17,7 +17,7 @@
               </div>
             </template>
             <template slot="Battery">
-              <span class="basic-info-text">{{form.Battery}}%</span>
+              <i class="fa fa-battery-4"></i>
             </template>
           </avue-form>
         </el-card>
@@ -159,6 +159,7 @@ export default {
         labelPosition: "top",
         submitText: "保 存",
         emptyBtn: false,
+        gutter: 20,
         column: [
           {
             label: "ID",
@@ -620,7 +621,7 @@ export default {
 }
 
 .system-form {
-  height: 680px !important;
+  height: 650px !important;
 }
 
 .inline-input {
