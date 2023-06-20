@@ -12,8 +12,7 @@
                  :before-open="beforeOpen"
                  @on-load="onLoad"
                  :table-loading="loading">
-        <template slot="menu"
-                  slot-scope="{row}">
+        <template slot="menu">
           <el-button type="text"
                      icon="el-icon-edit"
                      size="medium"

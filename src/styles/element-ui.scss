@@ -571,3 +571,33 @@
     background-size: auto 100%;
   }
 }
+
+.el-transfer-panel,
+.el-transfer-panel__header {
+  text-align: left;
+  background: #0a3079 !important;
+  color: #fff !important;
+}
+
+.el-checkbox__label,
+.el-checkbox__label span {
+  color: #fff !important;
+}
+
+.el-transfer-panel {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.el-transfer-panel__header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.el-transfer__button {
+  padding: 7px 12px;
+}
+
+.el-transfer__button.is-disabled {
+  color: #333;
+  background: #999;
+  border-color: #999;
+}

@@ -1,7 +1,7 @@
 <template>
   <div class="basic-info">
     <el-row :gutter="20">
-      <el-col :span="12">
+      <el-col :lg="12">
         <el-card style="margin-bottom: 20px;">
           <div slot="header"
                class="clearfix">
@@ -22,7 +22,7 @@
           </avue-form>
         </el-card>
       </el-col>
-      <el-col :span="12">
+      <el-col :lg="12">
         <el-card style="margin-bottom: 20px;">
           <div slot="header"
                class="clearfix">
@@ -78,7 +78,6 @@ export default {
       option1: {
         border: false,
         index: false,
-        size: 'mini',
         filterBtn: false,
         headerAlign: 'center',
         align: 'center',
@@ -156,7 +155,6 @@ export default {
       },
       option: {
         span: 6,
-        size: "large",
         labelWidth: 110,
         labelPosition: "top",
         submitText: "保 存",
@@ -167,12 +165,255 @@ export default {
             disabled: true
           },
           {
-            label: "設備名稱",
-            offset: 2,
+            label: "設備編號",
+            prop: "equipment_number",
+            display: false,
+            search: true,
+          },
+          {
+            label: "連線狀態",
+            prop: "status",
+            dicData: [{
+              label: "斷線",
+              value: 0
+            },
+            {
+              label: "連線",
+              value: 1
+            }],
+            display: false
+          },
+          {
+            label: "運作狀態",
+            prop: "yz_status",
+            display: false,
+            dicData: [{
+              label: "異常",
+              value: 0
+            },
+            {
+              label: "正常",
+              value: 1
+            }],
+          },
+          {
+            label: "太陽能板發電狀態",
+            prop: "Solar_panel_power_generation_status",
+            display: false,
+            dicData: [{
+              label: "異常",
+              value: 0
+            },
+            {
+              label: "正常",
+              value: 1
+            }],
+          },
+          {
+            label: "電池電量",
+            prop: "Battery",
+            display: false,
+          },
+          {
+            label: "工作模式",
+            prop: "model",
+            display: false
+          },
+          {
+            label: "網路位址",
+            prop: "ip",
+            hide: true,
+          },
+          {
+            label: "系統類別",
+            prop: "system_type",
+            type: "select",
+            hide: true,
+            width: 120,
+            dicData: [{
+              label: "霧區閃光黃燈",
+              value: 1
+            }]
+          },
+          {
+            label: "路段特性",
+            prop: "road_section_characteristics",
+            type: "select",
+            hide: true,
+            width: 80,
+            dicData: [{
+              label: "主線",
+              value: 1
+            }]
           },
           {
             label: "設備位置",
-            offset: 2,
+            prop: "equipment_location",
+            hide: true,
+            width: 220,
+          },
+          {
+            label: "設備類別",
+            prop: "equipment_type",
+            type: "select",
+            hide: true,
+            width: 100,
+            dicData: [{
+              label: "閃光黃燈(FI)",
+              value: 1
+            }]
+          },
+          {
+            label: "國道路線",
+            hide: true,
+            prop: "national_road",
+          },
+          {
+            label: "安裝方向",
+            type: "select",
+            hide: true,
+            prop: "installation_direction",
+            dicData: [{
+              label: "北上(N)",
+              value: 1
+            },
+            {
+              label: "南下(S)",
+              value: 0
+            }]
+          },
+          {
+            label: "主線里程",
+            prop: "main_line_mileage",
+            hide: true,
+            width: 220,
+          },
+          {
+            label: "安裝位置",
+            type: "select",
+            hide: true,
+            prop: "installation_position",
+            dicData: [{
+              label: "外側(O)",
+              value: 1
+            },
+            {
+              label: "內側(I)",
+              value: 0
+            }]
+          },
+          {
+            label: "管轄單位",
+            type: "select",
+            hide: true,
+            prop: "jurisdictional_unit",
+            dicData: [{
+              label: "苗栗工務段",
+              value: 1
+            },
+            {
+              label: "大甲工務段",
+              value: 0
+            }]
+          },
+          {
+            label: "護欄形式",
+            type: "select",
+            hide: true,
+            prop: "guardrail_type",
+            dicData: [{
+              label: "紐澤西護欄",
+              value: 0
+            },
+            {
+              label: "紐澤西護欄+鋼管",
+              value: 1
+            },
+            {
+              label: "紐澤西護欄+防眩板",
+              value: 2
+            },
+            {
+              label: "RC紐澤西護欄",
+              value: 3
+            },
+            {
+              label: "RC紐澤西護欄+鋼管",
+              value: 4
+            },
+            {
+              label: "鋼板護欄",
+              value: 5
+            },
+            ]
+          },
+          {
+            label: "GPS座標",
+            hide: true,
+            prop: "gps_coordinate",
+            width: 220,
+          },
+          {
+            label: "閃爍頻率",
+            type: "select",
+            hide: true,
+            prop: "flicker_frequency",
+            width: 100,
+            dicData: [
+              {
+                label: "30次/每分鐘",
+                value: 1
+              },
+              {
+                label: "60次/每分鐘",
+                value: 2
+              },
+              {
+                label: "90次/每分鐘",
+                value: 3
+              },
+              {
+                label: "120次/每分鐘",
+                value: 4
+              },
+            ]
+          },
+          {
+            label: "亮度選擇",
+            type: "select",
+            prop: "brightness",
+            dicData: [
+              {
+                label: "10%",
+                value: 1
+              },
+              {
+                label: "20%",
+                value: 2
+              },
+              {
+                label: "40%",
+                value: 3
+              },
+              {
+                label: "60%",
+                value: 4
+              },
+              {
+                label: "80%",
+                value: 5
+              },
+              {
+                label: "100%",
+                value: 6
+              },
+            ]
+          },
+          {
+            label: "回傳周期",
+            hide: true,
+            prop: "return_period",
+            width: 120,
           },
           {
             label: "設備電量",
@@ -182,15 +423,12 @@ export default {
           {
             label: "創建時間",
             prop: "create_time",
-            offset: 2,
           },
           {
             label: "安裝圖片",
             type: "upload",
             prop: "install_img",
-            // action: "/api/tuopu/yjzz/savefile",
             accept: "image/*",
-            // tip: "只能上传图片文件，且不超过10M",
             fileType: 'img',
             dataType: "object",
             propsHttp: {
@@ -205,12 +443,56 @@ export default {
             multiple: true,
             slot: true,
             span: 24,
-          },]
+          },
+        ]
+        // column: [
+        //   {
+        //     label: "ID",
+        //     disabled: true
+        //   },
+        //   {
+        //     label: "設備名稱",
+        //     offset: 2,
+        //   },
+        //   {
+        //     label: "設備位置",
+        //     offset: 2,
+        //   },
+        //   {
+        //     label: "設備電量",
+        //     prop: "Battery",
+        //     slot: true,
+        //   },
+        //   {
+        //     label: "創建時間",
+        //     prop: "create_time",
+        //     offset: 2,
+        //   },
+        //   {
+        //     label: "安裝圖片",
+        //     type: "upload",
+        //     prop: "install_img",
+        //     accept: "image/*",
+        //     fileType: 'img',
+        //     dataType: "object",
+        //     propsHttp: {
+        //       res: "data",
+        //       url: "url",
+        //       fileName: "image"
+        //     },
+        //     limit: 9,
+        //     listType: "picture-card",
+        //     fileList: [],
+        //     fileSize: 1024 * 10,
+        //     multiple: true,
+        //     slot: true,
+        //     span: 24,
+        //   },
+        // ]
       },
       menuform: {},
       menuOption: {
         span: 6,
-        size: "large",
         labelWidth: 110,
         labelPosition: "top",
         emptyBtn: false,
@@ -338,8 +620,7 @@ export default {
 }
 
 .system-form {
-  height: 450px !important;
-  /* height: 520px !important; */
+  height: 680px !important;
 }
 
 .inline-input {

@@ -20,7 +20,10 @@
                      size="small">詳 情</el-button>
           <el-button type="text"
                      icon="el-icon-download"
-                     size="small">匯 出</el-button>
+                     size="small">導 出</el-button>
+          <el-button type="text"
+                     icon="el-icon-delete"
+                     size="small">刪 除</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -59,6 +62,8 @@ export default {
         searchGutter: 40,
         searchMenuPosition: 'left',
         menuWidth: 300,
+        editBtn: false,
+        delBtn: false,
         column: [
           {
             label: "設備編號",

@@ -160,7 +160,7 @@ export const constantRoutes = [
         path: "role",
         name: "role",
         component: () => import("@/views/userList/role/index.vue"),
-        meta: { title: "角色管理", icon: "el-icon-s-flag" },
+        meta: { title: "權限管理", icon: "el-icon-s-flag" },
       },
       {
         path: "user",

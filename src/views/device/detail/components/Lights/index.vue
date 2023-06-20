@@ -114,13 +114,23 @@
                  @close="visible = false"
                  custom-class="avue-dialog avue-crud__dialog"
                  width="60%">
-        <avue-crud v-model="form"
+        <el-transfer :titles="['選擇設備', '已增加']"
+                     :button-texts="['刪除', '增加']"
+                     filterable
+                     ref="transfer"
+                     :render-content="renderFunc"
+                     v-model="value"
+                     :format="{
+                    noChecked: '${total}',
+                    hasChecked: '${checked}/${total}'
+                  }"></el-transfer>
+        <!-- <avue-crud v-model="form"
                    :data='data'
                    :option="option"
                    :page.sync="page"
                    @on-load="onLoad">
 
-        </avue-crud>
+        </avue-crud> -->
         <div slot="footer"
              class="avue-dialog__footer avue-dialog__footer--right">
           <el-button type="primary"
@@ -145,6 +155,7 @@ export default {
   name: 'FogLamp',
   data () {
     return {
+      value: [],
       loading: false,
       form: {},
       data: [],
@@ -567,7 +578,11 @@ export default {
     // this.initPage()
   },
 
+
   methods: {
+    renderFunc (h, option) {
+      return <span>{option.key} - {option.label}</span>
+    },
     onLoad (page, params = {}) {
       this.loading = true;
       const lightmodel = [10, 20, 40, 60, 80, 100]

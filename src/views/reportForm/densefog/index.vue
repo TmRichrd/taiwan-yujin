@@ -16,7 +16,7 @@
         <template slot="menuLeft">
           <el-button type="primary"
                      icon="el-icon-download"
-                     size="small">匯 出</el-button>
+                     size="small">導 出</el-button>
         </template>
         <template slot="time"
                   slot-scope="{row}">
