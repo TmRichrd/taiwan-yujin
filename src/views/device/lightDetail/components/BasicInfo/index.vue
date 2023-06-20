@@ -17,7 +17,10 @@
               </div>
             </template>
             <template slot="Battery">
-              <i class="fa fa-battery-4"></i>
+              <div class="Battery">
+                <i class="fa fa-battery-4"></i>
+                <span class="Digital">90%</span>
+              </div>
             </template>
           </avue-form>
         </el-card>
@@ -654,5 +657,17 @@ export default {
   justify-content: center;
   color: white;
   height: 32px;
+}
+.Battery {
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 10px;
+  }
+  span {
+    color: rgb(45, 250, 58);
+    flex: 1;
+    font-size: 20px;
+  }
 }
 </style>
