@@ -44,7 +44,7 @@ export default {
         searchGutter: 40,
         searchMenuPosition: 'left',
         addBtn: false,
-        columnBtn: false,
+
         delBtn: false,
         header: false,
         column: [

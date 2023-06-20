@@ -57,7 +57,7 @@ export default {
         searchMenuPosition: 'left',
         editBtn: false,
         addBtn: false,
-        columnBtn: false,
+
         menu: false,
         column: [
           {

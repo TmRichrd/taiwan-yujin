@@ -103,7 +103,7 @@ export default {
         filterBtn: false,
         headerAlign: 'center',
         align: 'center',
-        columnBtn: false,
+
         dialogWidth: "40%",
         labelWidth: 140,
         searchSpan: 6,

@@ -80,7 +80,7 @@ export default {
         addBtnText: "新增權限",
         editBtnText: "編輯權限",
         delBtnText: "刪除權限",
-        columnBtn: false,
+
         column: [{
           label: 'ID',
           prop: 'id',

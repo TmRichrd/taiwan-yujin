@@ -55,7 +55,7 @@ export default {
         searchMenuPosition: "left",
         delBtn: false,
         editBtn: false,
-        columnBtn: false,
+
         column: [
           {
             label: "路段名稱",

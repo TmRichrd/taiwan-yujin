@@ -47,7 +47,7 @@ export default {
         addBtnText: "新增用戶",
         editBtnText: "編輯用戶",
         delBtnText: "刪除用戶",
-        columnBtn: false,
+
         column: [{
           label: 'ID',
           prop: 'id',

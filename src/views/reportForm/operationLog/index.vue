@@ -52,7 +52,7 @@ export default {
         searchIcon: true,
         editBtn: false,
         menu: false,
-        columnBtn: false,
+
         column: [
           {
             label: "紀錄時間",

@@ -57,7 +57,7 @@ export default {
         searchSpan: 6,
         searchIndex: 3,
         searchIcon: true,
-        columnBtn: false,
+
         searchMenuSpan: 6,
         searchGutter: 40,
         searchMenuPosition: 'left',
