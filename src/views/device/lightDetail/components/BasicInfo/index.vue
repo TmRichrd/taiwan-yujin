@@ -22,6 +22,33 @@
                 <span class="Digital">90%</span>
               </div>
             </template>
+            <template slot="signal">
+              <div class="signal">
+                <svg width="20"
+                     height="20">
+                  <rect x="2"
+                        y="16"
+                        width="3"
+                        height="4"
+                        fill="#2ecc71" />
+                  <rect x="7"
+                        y="12"
+                        width="3"
+                        height="8"
+                        fill="#2ecc71" />
+                  <rect x="12"
+                        y="8"
+                        width="3"
+                        height="12"
+                        fill="#2ecc71" />
+                  <rect x="17"
+                        y="4"
+                        width="3"
+                        height="16"
+                        fill="#2ecc71" />
+                </svg>
+              </div>
+            </template>
           </avue-form>
         </el-card>
       </el-col>
@@ -425,6 +452,11 @@ export default {
             slot: true,
           },
           {
+            label: "設備信號",
+            prop: "signal",
+            slot: true,
+          },
+          {
             label: "創建時間",
             prop: "create_time",
           },
@@ -669,5 +701,12 @@ export default {
     flex: 1;
     font-size: 20px;
   }
+}
+.signal {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  padding: 2px;
+  margin-top: 6px;
 }
 </style>
