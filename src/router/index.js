@@ -144,6 +144,12 @@ export const constantRoutes = [
         component: () => import("@/views/test/test2/index.vue"),
         meta: { title: "能見度控制", icon: "el-icon-view" },
       },
+      {
+        path: "backups",
+        name: "backups",
+        component: () => import("@/views/device/backups/index.vue"),
+        meta: { title: "資料備份", icon: "el-icon-document" },
+      },
     ],
   },
   {
