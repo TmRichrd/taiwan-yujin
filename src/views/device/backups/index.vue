@@ -33,6 +33,7 @@
                          @click="handleBackups">備份資料庫</el-button>
               <el-button type="primary"
                          icon="el-icon-date"
+                         @click="showDialog"
                          size="medium">自動備份</el-button>
             </template>
           </avue-crud>
@@ -71,7 +72,7 @@ export default {
         pageSize: 10,
         total: 0,
       },
-      sectionList: [],
+      selectionList: [],
       form: {},
       data: [],
       option: {
@@ -160,9 +161,55 @@ export default {
           }
         ]
       },
+      option2: {
+        border: false,
+        submitText: "保 存",
+        emptyText: "關 閉",
+        index: false,
+        size: 'medium',
+        filterBtn: false,
+        headerAlign: 'center',
+        align: 'center',
+        dialogWidth: "40%",
+        labelWidth: 140,
+        searchSpan: 6,
+        searchMenuSpan: 8,
+        searchGutter: 40,
+        searchMenuPosition: 'left',
+        addBtn: false,
+        editBtn: false,
+        delBtn: false,
+        column: [
+          {
+            label: "備份時間",
+            prop: "name",
+            type: "time",
+            valueFormat: "HH:mm",
+            format: "HH:mm",
+            rules: [{
+              required: true,
+              message: "請選擇備份時間",
+              trigger: "blur"
+            }],
+          },
+        ]
+      },
     };
   },
   methods: {
+    showDialog () {
+      this.$DialogForm.show({
+        title: "自動備份",
+        width: "30%",
+        option: this.option2,
+        beforeClose: (done) => {
+          done()
+        },
+        callback: (res) => {
+          res.done()
+        }
+      })
+    },
     selectionChange (list) {
       console.log("🚀 ~ file: index.vue:159 ~ selectionChange ~ list:", list);
       this.selectionList = list
