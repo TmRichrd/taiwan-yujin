@@ -1,40 +1,25 @@
 <template>
   <div>
     <el-card style="margin-bottom:20px">
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>設備維護</span>
       </div>
       <el-row>
         <el-col :span="13">
-          <avue-form :option="option"
-                     ref="form"
-                     v-model="form"
-                     @reset-change="resetChange"
-                     @submit="submit">
+          <avue-form :option="option" ref="form" v-model="form" @reset-change="resetChange" @submit="submit">
           </avue-form>
         </el-col>
       </el-row>
     </el-card>
     <el-card>
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>設備維護記錄表</span>
       </div>
-      <avue-crud :option="crudOption"
-                 :data="data"
-                 :table-loading="loading"
-                 v-model="curdForm"
-                 :page.sync="page"
-                 @on-load="onLoad">
-        <template slot="menu"
-                  slot-scope="{row}">
-          <el-button type="text"
-                     icon="el-icon-edit"
-                     @click="handleEdit(row)">編 輯</el-button>
-          <el-button type="text"
-                     icon="el-icon-delete"
-                     @click="handleDelete(row)">刪 除</el-button>
+      <avue-crud :option="crudOption" :data="data" :table-loading="loading" v-model="curdForm" :page.sync="page"
+        @on-load="onLoad">
+        <template slot="menu" slot-scope="{row}">
+          <el-button type="text" icon="el-icon-edit" @click="handleEdit(row)">編 輯</el-button>
+          <el-button type="text" icon="el-icon-delete" @click="handleDelete(row)">刪 除</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -43,6 +28,7 @@
 
 <script>
 // import { addLoadLog, delLoadLog, getLoadLogDet, getLoadLogList, editLoadLogList } from '@/api'
+import Mockjs from "mockjs"
 export default {
   data () {
     return {
@@ -53,11 +39,7 @@ export default {
       },
       loading: false,
       curdForm: {},
-      data: [
-        {
-
-        }
-      ],
+      data: [],
       form: {},
       crudOption: {
         border: false,
@@ -83,6 +65,14 @@ export default {
           {
             label: "内容",
             prop: "OperateContent"
+          },
+          {
+            label: '圖片',
+            prop: 'OperateImage',
+            dataType: 'string',
+            type: 'upload',
+            span: 24,
+            listType: 'picture-card',
           },
           {
             label: "創建日期",
@@ -142,6 +132,7 @@ export default {
               thumb: 'url'
             },
             tip: "只能上傳圖片檔，且不超過10M",
+            fileSize: 10240,
             accept: "image/*",
             fileType: 'img',
             dataType: "object",
@@ -178,7 +169,20 @@ export default {
       // })
     },
     async onLoad (page) {
-      // this.loading = true
+      this.loading = true
+      const data = Mockjs.mock({
+        'list|1-10': [{
+          'Id|+1': 1,
+          'OperateDate': '@date("yyyy-MM-dd HH:mm:ss")',
+          'OperateContent': '@word',
+          'OperateImage': 'https://dummyimage.com/400x400.jpg',
+          'CreateDate': '@date("yyyy-MM-dd HH:mm:ss")',
+        }],
+        "total": 100
+      })
+      this.data = data.list
+      this.page.total = data.total
+      this.loading = false
       // try
       // {
       //   const params = {

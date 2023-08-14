@@ -3,14 +3,10 @@
     <el-row :gutter="20">
       <el-col :lg="12">
         <el-card style="margin-bottom: 20px;">
-          <div slot="header"
-               class="clearfix">
+          <div slot="header" class="clearfix">
             <span>基本訊息</span>
           </div>
-          <avue-form :option="option"
-                     @submit="submit"
-                     class="system-form"
-                     v-model="form">
+          <avue-form :option="option" @submit="submit" class="system-form" v-model="form">
             <template slot="create_time">
               <div class="basic-info-text">
                 {{ form.create_time }}
@@ -24,28 +20,11 @@
             </template>
             <template slot="signal">
               <div class="signal">
-                <svg width="20"
-                     height="20">
-                  <rect x="2"
-                        y="16"
-                        width="3"
-                        height="4"
-                        fill="#2ecc71" />
-                  <rect x="7"
-                        y="12"
-                        width="3"
-                        height="8"
-                        fill="#2ecc71" />
-                  <rect x="12"
-                        y="8"
-                        width="3"
-                        height="12"
-                        fill="#2ecc71" />
-                  <rect x="17"
-                        y="4"
-                        width="3"
-                        height="16"
-                        fill="#2ecc71" />
+                <svg width="20" height="20">
+                  <rect x="2" y="16" width="3" height="4" fill="#2ecc71" />
+                  <rect x="7" y="12" width="3" height="8" fill="#2ecc71" />
+                  <rect x="12" y="8" width="3" height="12" fill="#2ecc71" />
+                  <rect x="17" y="4" width="3" height="16" fill="#2ecc71" />
                 </svg>
               </div>
             </template>
@@ -54,21 +33,15 @@
       </el-col>
       <el-col :lg="12">
         <el-card style="margin-bottom: 20px;">
-          <div slot="header"
-               class="clearfix">
+          <div slot="header" class="clearfix">
             <span>運作方案</span>
           </div>
-          <avue-form class="system-form"
-                     :option="menuOption"
-                     @submit="handleSubmitMenuForm"
-                     v-model="menuform">
+          <avue-form class="system-form" :option="menuOption" @submit="handleSubmitMenuForm" v-model="menuform">
             <template slot="time_control">
-              <el-button type="primary"
-                         size="medium">設 置</el-button>
+              <el-button type="primary" size="medium">設 置</el-button>
             </template>
             <template slot="read_param">
-              <el-button type="primary"
-                         size="medium">立即回報</el-button>
+              <el-button type="primary" size="medium">立即回報</el-button>
             </template>
           </avue-form>
         </el-card>
@@ -77,12 +50,9 @@
     <el-row :gutter="20">
       <el-col :span="24">
         <el-card>
-          <avue-crud :option="option1"
-                     @on-load='onLoad'
-                     :data="data1">
-            <template slot="time"
-                      slot-scope="{row}">
-              <span>{{row.time}}</span>
+          <avue-crud :option="option1" @on-load='onLoad' :data="data1">
+            <template slot="time" slot-scope="{row}">
+              <span>{{ row.time }}</span>
             </template>
           </avue-crud>
         </el-card>
@@ -443,6 +413,7 @@ export default {
           {
             label: "回傳周期",
             hide: true,
+            type: "datetime",
             prop: "return_period",
             width: 120,
           },
@@ -690,18 +661,22 @@ export default {
   color: white;
   height: 32px;
 }
+
 .Battery {
   display: flex;
   align-items: center;
+
   i {
     margin-right: 10px;
   }
+
   span {
     color: rgb(45, 250, 58);
     flex: 1;
     font-size: 20px;
   }
 }
+
 .signal {
   width: 24px;
   height: 24px;
