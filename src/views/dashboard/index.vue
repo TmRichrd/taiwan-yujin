@@ -302,7 +302,7 @@ export default {
     window.addEventListener('resize', () => {
       this.myChart.resize()
       this.redianChart.resize()
-      this.electricityChart.resize()
+      // this.electricityChart.resize()
     })
 
   },
@@ -693,8 +693,8 @@ export default {
       this.myChart.setOption(this.initOption())
       this.redianChart = echarts.init(document.getElementById('redian'))
       this.redianChart.setOption(this.initRedianOption())
-      this.electricityChart = echarts.init(document.getElementById('electricity'))
-      this.electricityChart.setOption(this.initEleCtricity())
+      // this.electricityChart = echarts.init(document.getElementById('electricity'))
+      // this.electricityChart.setOption(this.initEleCtricity())
       // this.pieData = res.item5[0]
       // this.pieData2 = res.item5[1]
       // console.log(this.cardList)

@@ -36,9 +36,9 @@ export default {
   },
   mounted () {
     this.initMap();
-    this.drawPoint();
-    this.drawPolygon();
-    this.drawLine();
+    // this.drawPoint();
+    // this.drawPolygon();
+    // this.drawLine();
     map.on("click", this.clickMap);
   },
   methods: {
