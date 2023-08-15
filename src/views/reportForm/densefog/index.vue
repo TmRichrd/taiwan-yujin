@@ -1,26 +1,16 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>濃霧事件</span>
       </div>
-      <avue-crud :option="option"
-                 :page.sync="page"
-                 v-model="form"
-                 :data="data"
-                 :before-open="beforeOpen"
-                 @on-load="onLoad"
-                 :table-loading="loading"
-                 @search-change="searchChange">
+      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
+        @on-load="onLoad" :table-loading="loading" @search-change="searchChange">
         <template slot="menuLeft">
-          <el-button type="primary"
-                     icon="el-icon-download"
-                     size="small">導 出</el-button>
+          <el-button type="primary" icon="el-icon-download" size="small">導 出</el-button>
         </template>
-        <template slot="time"
-                  slot-scope="{row}">
-          {{row.time}}
+        <template slot="time" slot-scope="{row}">
+          {{ row.time }}
         </template>
       </avue-crud>
     </el-card>
@@ -56,7 +46,7 @@ export default {
         editBtn: false,
         addBtn: false,
         menu: false,
-
+        columnBtn: false,
         column: [
           {
             label: "紀錄時間",

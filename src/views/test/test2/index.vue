@@ -1,17 +1,11 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>優先等級</span>
       </div>
-      <avue-crud :option="option"
-                 :page.sync="page"
-                 v-model="form"
-                 :data="data"
-                 :before-open="beforeOpen"
-                 @on-load="onLoad"
-                 :table-loading="loading">
+      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
+        @on-load="onLoad" :table-loading="loading">
       </avue-crud>
     </el-card>
   </div>
@@ -44,7 +38,7 @@ export default {
         searchGutter: 40,
         searchMenuPosition: 'left',
         addBtn: false,
-
+        columnBtn: false,
         delBtn: false,
         header: false,
         column: [

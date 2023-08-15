@@ -1,26 +1,14 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>路段列表</span>
       </div>
-      <avue-crud :option="option"
-                 :page.sync="page"
-                 v-model="form"
-                 :data="data"
-                 :before-open="beforeOpen"
-                 @on-load="onLoad"
-                 :table-loading="loading">
-        <template slot="menu"
-                  slot-scope="{row}">
-          <el-button type="text"
-                     size="medium"
-                     icon="el-icon-edit"
-                     @click="handleDetail(row)">編 輯</el-button>
-          <el-button type="text"
-                     size="medium"
-                     icon="el-icon-delete">刪 除</el-button>
+      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
+        @on-load="onLoad" :table-loading="loading">
+        <template slot="menu" slot-scope="{row}">
+          <el-button type="text" size="medium" icon="el-icon-edit" @click="handleDetail(row)">編 輯</el-button>
+          <el-button type="text" size="medium" icon="el-icon-delete">刪 除</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -55,7 +43,7 @@ export default {
         searchMenuPosition: "left",
         delBtn: false,
         editBtn: false,
-
+        columnBtn: false,
         column: [
           {
             label: "路段名稱",

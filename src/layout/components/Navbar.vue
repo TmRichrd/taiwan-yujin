@@ -44,7 +44,7 @@
         </el-dropdown-menu>
       </el-dropdown> -->
     </div>
-    <el-dialog :visible.sync="dialogTableVisible" width="640px" title="修改密碼">
+    <el-dialog :visible.sync="dialogTableVisible" width="640px" title="修改密碼" append-to-body>
       <div class="dialog-content">
         <el-form ref="userForm" :model="userForm" :inline="true" :rules="rules" label-width="140px">
           <el-row>

@@ -1,29 +1,28 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>霧區閃光黃燈</span>
       </div>
-      <avue-crud :option="option"
-                 :page.sync="page"
-                 v-model="form"
-                 :data="data"
-                 :before-open="beforeOpen"
-                 @on-load="onLoad"
-                 :table-loading="loading">
-        <template slot="menu"
-                  slot-scope="{row}">
-          <el-button type="text"
-                     icon="el-icon-info"
-                     @click="handleDetail(row)"
-                     size="small">詳 情</el-button>
-          <el-button type="text"
-                     icon="el-icon-download"
-                     size="small">導 出</el-button>
-          <el-button type="text"
-                     icon="el-icon-delete"
-                     size="small">刪 除</el-button>
+      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
+        @on-load="onLoad" :table-loading="loading">
+
+        <template slot="status" slot-scope="{row}">
+          <span v-if="row.status == 0" class="error-status">斷線</span>
+          <span v-if="row.status == 1" class="success-status">連線</span>
+        </template>
+        <template slot="yz_status" slot-scope="{row}">
+          <span v-if="row.yz_status == 0" class="error-status">異常</span>
+          <span v-if="row.yz_status == 1" class="success-status">正常</span>
+        </template>
+        <template slot="Solar_panel_power_generation_status" slot-scope="{row}">
+          <span v-if="row.Solar_panel_power_generation_status == 0" class="error-status">異常</span>
+          <span v-if="row.Solar_panel_power_generation_status == 1" class="success-status">正常</span>
+        </template>
+        <template slot="menu" slot-scope="{row}">
+          <el-button type="text" icon="el-icon-info" @click="handleDetail(row)" size="small">詳 情</el-button>
+          <el-button type="text" icon="el-icon-download" size="small">導 出</el-button>
+          <el-button type="text" icon="el-icon-delete" size="small">刪 除</el-button>
         </template>
       </avue-crud>
     </el-card>
@@ -43,11 +42,7 @@ export default {
         total: 0,
       },
       form: {},
-      data: [
-        {
-
-        }
-      ],
+      data: [],
       option: {
         border: false,
         index: false,
@@ -57,13 +52,14 @@ export default {
         searchSpan: 6,
         searchIndex: 3,
         searchIcon: true,
-
+        size: "medium",
         searchMenuSpan: 6,
         searchGutter: 40,
         searchMenuPosition: 'left',
         menuWidth: 300,
         editBtn: false,
         delBtn: false,
+        columnBtn: false,
         column: [
           {
             label: "設備編號",
@@ -74,6 +70,7 @@ export default {
           {
             label: "連線狀態",
             prop: "status",
+            slot: true,
             dicData: [{
               label: "斷線",
               value: 0

@@ -1,17 +1,11 @@
 <template>
   <div class="app-container">
     <el-card>
-      <div slot="header"
-           class="clearfix">
+      <div slot="header" class="clearfix">
         <span>時段控制</span>
       </div>
-      <avue-crud :option="option"
-                 :page.sync="page"
-                 v-model="form"
-                 :data="data"
-                 :before-open="beforeOpen"
-                 @on-load="onLoad"
-                 :table-loading="loading">
+      <avue-crud :option="option" :page.sync="page" v-model="form" :data="data" :before-open="beforeOpen"
+        @on-load="onLoad" :table-loading="loading">
       </avue-crud>
     </el-card>
   </div>
@@ -43,7 +37,7 @@ export default {
         searchMenuSpan: 8,
         searchGutter: 40,
         searchMenuPosition: 'left',
-
+        columnBtn: false,
         column: [
           {
             label: "起始時間",
@@ -135,9 +129,7 @@ export default {
               'ld': `@pick(['100','80','60','40','20'])%`,
             }
           ],
-          total: 30
         }).list;
-        this.page.total = 100
       }, 500);
     }
   },

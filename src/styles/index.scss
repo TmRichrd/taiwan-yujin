@@ -1,15 +1,16 @@
-@import './variables.scss';
-@import './mixin.scss';
-@import './transition.scss';
-@import './element-ui.scss';
-@import './sidebar.scss';
+@import "./variables.scss";
+@import "./mixin.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
 
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -24,7 +25,6 @@ html {
 #app {
   height: 100%;
 }
-
 
 a:focus,
 a:active {
@@ -58,34 +58,70 @@ div:focus {
 .app-container {
   padding: 20px;
 }
-.four-border{
-  background:
-    linear-gradient(to top, #39E5EF, #39E5EF) left top no-repeat,/*上左*/
-    linear-gradient(to right, #39E5EF, #39E5EF) left top no-repeat,/*左上*/
-    linear-gradient(to left, #39E5EF, #39E5EF) right top no-repeat,/*上右*/
-    linear-gradient(to bottom, #39E5EF, #39E5EF) right top no-repeat,/*上右*/
-    linear-gradient(to left, #39E5EF, #39E5EF) left bottom no-repeat,/*下左*/
-    linear-gradient(to bottom, #39E5EF, #39E5EF) left bottom no-repeat,/*左下*/
-    linear-gradient(to top, #39E5EF, #39E5EF) right bottom no-repeat,/*下右*/
-    linear-gradient(to left, #39E5EF, #39E5EF) right bottom no-repeat;/*右下*/
-    background-size: 2px 18px, 18px 2px, 2px 18px, 18px 2px;
+.four-border {
+  background: linear-gradient(to top, #39e5ef, #39e5ef) left top no-repeat,
+    /*上左*/ linear-gradient(to right, #39e5ef, #39e5ef) left top no-repeat,
+    /*左上*/ linear-gradient(to left, #39e5ef, #39e5ef) right top no-repeat,
+    /*上右*/ linear-gradient(to bottom, #39e5ef, #39e5ef) right top no-repeat,
+    /*上右*/ linear-gradient(to left, #39e5ef, #39e5ef) left bottom no-repeat,
+    /*下左*/ linear-gradient(to bottom, #39e5ef, #39e5ef) left bottom no-repeat,
+    /*左下*/ linear-gradient(to top, #39e5ef, #39e5ef) right bottom no-repeat,
+    /*下右*/ linear-gradient(to left, #39e5ef, #39e5ef) right bottom no-repeat; /*右下*/
+  background-size: 2px 18px, 18px 2px, 2px 18px, 18px 2px;
 }
-.loginForm{
-  .el-input__inner{
-    padding-left:40px !important;
-    height:51px !important;
+.loginForm {
+  .el-input__inner {
+    padding-left: 40px !important;
+    height: 51px !important;
     background: none;
-    border: 1px solid #2D67BF;
+    border: 1px solid #2d67bf;
     color: #fff;
   }
-  .el-form-item{
+  .el-form-item {
     margin-bottom: 30px !important;
   }
-  input::placeholder{
-    color: #2D67BF !important;
+  input::placeholder {
+    color: #2d67bf !important;
   }
 }
-.flex-row{
+.flex-row {
   display: flex;
   flex: row;
+}
+
+.error-status {
+  color: #f14343;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background: #f14343;
+    border-radius: 50%;
+  }
+}
+.success-status {
+  color: #67c23a;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background: #67c23a;
+    border-radius: 50%;
+  }
 }
