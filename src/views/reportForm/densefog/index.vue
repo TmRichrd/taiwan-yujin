@@ -139,7 +139,7 @@ export default {
             "id|+1": 1,
             "time": "@datetime",
             "event_code|1": '@string(10)',
-            "dense_fog_type|1": ["0", "1", "2"],
+            "dense_fog_type|1": [0, 1, 2],
             "highway_id|1": `@pick(['國道1號','國道2號'])`,
             "start_km|1": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
             "end_km|1": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
