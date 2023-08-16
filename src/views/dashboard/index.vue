@@ -140,7 +140,7 @@
               </div>
               <div class="col">
                 <span class="col-label">異常</span>
-                <span class="col-num Digital huanbi">68</span>
+                <span class="col-num Digital huanbi">23</span>
               </div>
             </div>
             <div class="con-right">
@@ -539,8 +539,8 @@ export default {
       ]
       const res = Mock.mock({
         'item1': [{
-          "jihuoshu": "2468",
-          "offlineshu": "68",
+          "jihuoshu": "2486",
+          "offlineshu": "86",
           "onlineshu": "2400",
         }],
         "item2": [],

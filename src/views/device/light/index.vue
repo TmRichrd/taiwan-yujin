@@ -8,15 +8,15 @@
         @on-load="onLoad" :table-loading="loading">
 
         <template slot="status" slot-scope="{row}">
-          <span v-if="row.status == 0" class="error-status">斷線</span>
+          <span v-if="row.status == 0" class="error-status">斷線 {{ row.error_time }}</span>
           <span v-if="row.status == 1" class="success-status">連線</span>
         </template>
         <template slot="yz_status" slot-scope="{row}">
-          <span v-if="row.yz_status == 0" class="error-status">異常</span>
+          <span v-if="row.yz_status == 0" class="error-status">異常 {{ row.error_time }}</span>
           <span v-if="row.yz_status == 1" class="success-status">正常</span>
         </template>
         <template slot="Solar_panel_power_generation_status" slot-scope="{row}">
-          <span v-if="row.Solar_panel_power_generation_status == 0" class="error-status">異常</span>
+          <span v-if="row.Solar_panel_power_generation_status == 0" class="error-status">異常 {{ row.error_time }}</span>
           <span v-if="row.Solar_panel_power_generation_status == 1" class="success-status">正常</span>
         </template>
         <template slot="menu" slot-scope="{row}">
@@ -362,6 +362,7 @@ export default {
               flicker_frequency: "120次/每分鐘",
               brightness: `@pick(${lightmodel})%`,
               return_period: "5分鐘至24小時",
+              error_time: "@time('yyyy-MM-dd HH:mm')"
             }
           ]
         }

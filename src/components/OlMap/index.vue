@@ -13,13 +13,15 @@ import XYZ from "ol/source/XYZ";
 // 图形
 import { Point, LineString, Polygon, Circle } from "ol/geom";
 // 样式
-import { Style, Icon, Fill, Stroke } from "ol/style";
+import { Circle as CircleStyle, Style, Icon, Fill, Stroke } from "ol/style";
 import { format } from "ol/coordinate";
 import MousePosition from "ol/control/MousePosition.js";
 // 几何图形类
 import Feature from "ol/Feature";
 import VectorSource from "ol/source/Vector";
+import VectorLayer from 'ol/layer/Vector';
 import "ol/ol.css";
+
 export default {
   name: "olMap",
   data () {
@@ -78,8 +80,8 @@ export default {
     },
 
     drawPoint () {
-      // let point = this.createPoint([113.269356, 23.135343]);
-      // map.addLayer(point);
+      let point = this.createPoint([this.center.lon, this.center.lat]);
+      map.addLayer(point);
     },
 
     drawPolygon () {
@@ -103,6 +105,24 @@ export default {
     },
 
     createPoint (coordinates) {
+      const marker = new Feature({
+        geometry: new Point(coordinates),
+      })
+      const vectorSource = new VectorSource({
+        features: [marker],
+      })
+      const vectorLayer = new VectorLayer({
+        source: vectorSource,
+        style: new Style({
+          image: new CircleStyle({
+            radius: 5,
+            fill: new Fill({ color: 'red' }),
+            stroke: new Stroke({ color: 'white', width: 1 }),
+          }),
+        }),
+      });
+      return vectorLayer;
+
       // let styleList = [
       //   new Style({
       //     image: new Icon({
